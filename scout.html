@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opportunity Scout | APPLY! Stewards</title>
+<meta name="description" content="Internal APPLY! Stewards workflow for extracting opportunities from LinkedIn posts, screenshots, and raw notes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<style>
+:root {
+  --primary: #0f766e;
+  --primary-dark: #115e59;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #dbe5e1;
+  --surface: #ffffff;
+  --soft: #f7fbf9;
+  --dark: #102033;
+  --danger: #b42318;
+  --radius: 8px;
+  --shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.08) 0%, rgba(255, 255, 255, 0) 34rem),
+    #ffffff;
+}
+
+a { color: inherit; }
+
+.container {
+  width: min(1280px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+}
+
+.nav {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.brand img {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-left: auto;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+main {
+  padding: 38px 0 70px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.44fr);
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 14px 0 10px;
+  font-size: clamp(38px, 6vw, 68px);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+}
+
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.panel,
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.panel {
+  padding: 18px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.48fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.stack {
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+}
+
+label {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 11px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: #ffffff;
+}
+
+textarea {
+  min-height: 104px;
+  resize: vertical;
+}
+
+.large {
+  min-height: 230px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+button,
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: #ffffff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+button.dark {
+  background: var(--dark);
+  color: #ffffff;
+}
+
+button.secondary,
+.button-link.secondary {
+  border-color: var(--line);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.status {
+  min-height: 22px;
+  color: var(--primary-dark);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.query-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.query {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--soft);
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.preview {
+  min-height: 260px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #101828;
+  color: #ffffff;
+  white-space: pre-wrap;
+  font: 13px/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  overflow: auto;
+}
+
+@media (max-width: 1040px) {
+  .hero,
+  .layout,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  header {
+    position: static;
+  }
+
+  .nav {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 16px 0;
+  }
+
+  .nav-links {
+    margin-left: 0;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a href="/" class="brand">
+      <img src="assets/logo.png" alt="APPLY! Stewards logo">
+      <span>APPLY! Stewards</span>
+    </a>
+    <nav class="nav-links" aria-label="Internal navigation">
+      <a href="/ops.html">Ops</a>
+      <a href="/desk.html">Publishing Desk</a>
+      <a href="/opportunities.html">Opportunities</a>
+      <a href="/submit.html">Submissions</a>
+      <a href="/">Public site</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Opportunity scout</span>
+        <h1>Find, extract, verify, package.</h1>
+        <p>Use this desk for LinkedIn posts, screenshots, forwarded flyers, and raw notes. It extracts the likely fields, formats the APPLY post, and saves the opportunity into Ops after you confirm the source.</p>
+      </div>
+      <aside class="panel stack">
+        <div class="field">
+          <label for="adminToken">Admin token</label>
+          <input id="adminToken" type="password" autocomplete="off" placeholder="Required to save">
+        </div>
+        <div class="status" id="statusMessage"></div>
+      </aside>
+    </section>
+
+    <section class="layout">
+      <aside class="stack">
+        <div class="panel">
+          <span class="eyebrow">Weekly search prompts</span>
+          <p style="margin-top:10px;">Start with LinkedIn and then verify against the official source before publishing.</p>
+          <div class="query-list">
+            <button class="query" type="button" data-query='site:linkedin.com/posts Ghana "National Service Personnel" "hiring"'>LinkedIn NSS hiring posts</button>
+            <button class="query" type="button" data-query='site:linkedin.com/jobs Ghana "National Service" "NSS"'>LinkedIn NSS jobs</button>
+            <button class="query" type="button" data-query='Ghana "National Service Personnel" "apply" "deadline"'>Web NSS opportunities</button>
+            <button class="query" type="button" data-query='Ghana "graduate trainee" "apply" "deadline"'>Graduate trainee opportunities</button>
+            <button class="query" type="button" data-query='Ghana internship "apply" "deadline" students graduates'>Internships for students and graduates</button>
+            <button class="query" type="button" data-query='Ghana scholarship "apply" "deadline" students 2026'>Scholarships and fellowships</button>
+          </div>
+        </div>
+
+        <div class="panel stack">
+          <span class="eyebrow">Screenshot or raw post</span>
+          <div class="field">
+            <label for="screenshotInput">Screenshot</label>
+            <input id="screenshotInput" type="file" accept="image/jpeg,image/png,image/webp">
+          </div>
+          <button class="secondary" type="button" id="ocrButton">Extract text from screenshot</button>
+          <div class="field">
+            <label for="rawText">Paste LinkedIn post, flyer text, or OCR output</label>
+            <textarea id="rawText" class="large" placeholder="Paste the opportunity text here. If you only have a screenshot, upload it and run OCR first."></textarea>
+          </div>
+          <div class="actions">
+            <button class="primary" type="button" id="extractButton">Extract fields</button>
+            <button class="secondary" type="button" id="clearButton">Clear</button>
+          </div>
+        </div>
+      </aside>
+
+      <section class="stack">
+        <form id="scoutForm" class="panel stack">
+          <span class="eyebrow">Review before saving</span>
+          <div class="grid-2">
+            <div class="field">
+              <label for="title">Title</label>
+              <input id="title" name="title" required>
+            </div>
+            <div class="field">
+              <label for="organization">Organization</label>
+              <input id="organization" name="organization" required>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category"></select>
+            </div>
+            <div class="field">
+              <label for="deadline">Deadline</label>
+              <input id="deadline" name="deadline" type="date">
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="audience">Who it fits</label>
+              <input id="audience" name="audience">
+            </div>
+            <div class="field">
+              <label for="location">Location</label>
+              <input id="location" name="location">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="sourceUrl">Official source or application URL</label>
+            <input id="sourceUrl" name="sourceUrl" type="url" placeholder="Required before saving">
+          </div>
+
+          <div class="field">
+            <label for="summary">Short summary</label>
+            <textarea id="summary" name="summary"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="whyItFits">Why it may be worth attention</label>
+            <textarea id="whyItFits" name="whyItFits"></textarea>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="steps">Application steps</label>
+              <textarea id="steps" name="steps" placeholder="One step per line"></textarea>
+            </div>
+            <div class="field">
+              <label for="tips">Quick tips</label>
+              <textarea id="tips" name="tips" placeholder="One tip per line"></textarea>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="tags">Tags</label>
+              <textarea id="tags" name="tags" placeholder="One tag per line or comma separated"></textarea>
+            </div>
+            <div class="field">
+              <label for="verificationNotes">Verification notes</label>
+              <textarea id="verificationNotes" name="verificationNotes"></textarea>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="secondary" type="button" id="copyPostButton">Copy WhatsApp draft</button>
+            <button class="secondary" type="button" id="copyOutreachButton">Copy outreach DM</button>
+            <button class="dark" type="button" id="saveDraftButton">Save as draft</button>
+            <button class="primary" type="button" id="savePublishedButton">Save as ready</button>
+          </div>
+        </form>
+
+        <div class="panel">
+          <span class="eyebrow">Post preview</span>
+          <pre id="postPreview" class="preview" style="margin-top:12px;"></pre>
+        </div>
+      </section>
+    </section>
+  </div>
+</main>
+
+<script type="module">
+import {
+  buildSourceOutreachMessage,
+  buildWhatsAppPost,
+  categoryOptions,
+  extractOpportunityDraftFromText,
+  normalizeList,
+  normalizeOpportunityInput
+} from "./shared/opportunity-utils.mjs";
+
+const form = document.getElementById("scoutForm");
+const statusMessage = document.getElementById("statusMessage");
+const rawText = document.getElementById("rawText");
+const screenshotInput = document.getElementById("screenshotInput");
+const categorySelect = document.getElementById("category");
+const postPreview = document.getElementById("postPreview");
+const adminToken = document.getElementById("adminToken");
+
+categorySelect.innerHTML = categoryOptions
+  .map((category) => `<option value="${category}">${category}</option>`)
+  .join("");
+
+const setStatus = (message, isError = false) => {
+  statusMessage.textContent = message;
+  statusMessage.className = isError ? "status error" : "status";
+};
+
+const setField = (name, value) => {
+  const field = form.elements[name];
+
+  if (field) {
+    field.value = Array.isArray(value) ? value.join("\n") : value || "";
+  }
+};
+
+const formOpportunity = () => {
+  const values = Object.fromEntries(new FormData(form).entries());
+  return normalizeOpportunityInput({
+    ...values,
+    listingType: "verified",
+    steps: normalizeList(values.steps),
+    tips: normalizeList(values.tips),
+    tags: normalizeList(values.tags)
+  });
+};
+
+const renderPreview = () => {
+  const opportunity = formOpportunity();
+  postPreview.textContent = opportunity.title && opportunity.organization
+    ? buildWhatsAppPost(opportunity)
+    : "Extract or enter an opportunity to preview the channel post.";
+};
+
+const applyDraft = (draft) => {
+  Object.entries(draft).forEach(([key, value]) => setField(key, value));
+  renderPreview();
+};
+
+const extractFields = () => {
+  if (!rawText.value.trim()) {
+    setStatus("Paste text or extract text from a screenshot first.", true);
+    return;
+  }
+
+  applyDraft(extractOpportunityDraftFromText(rawText.value));
+  setStatus("Fields extracted. Review the source before saving.");
+};
+
+const copyText = async (text, label) => {
+  await navigator.clipboard.writeText(text);
+  setStatus(`${label} copied.`);
+};
+
+const saveOpportunity = async (status) => {
+  const token = adminToken.value.trim();
+
+  if (!token) {
+    setStatus("Add the admin token before saving.", true);
+    return;
+  }
+
+  const opportunity = formOpportunity();
+
+  if (!opportunity.sourceUrl) {
+    setStatus("Add the official source or application URL before saving.", true);
+    return;
+  }
+
+  const response = await fetch("/.netlify/functions/save-opportunity", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "x-apply-admin-token": token
+    },
+    body: JSON.stringify({
+      ...opportunity,
+      status,
+      rawNotes: rawText.value
+    })
+  });
+  const payload = await response.json();
+
+  if (!response.ok) {
+    throw new Error(payload.errors?.join(" ") || payload.error || "Could not save opportunity.");
+  }
+
+  setStatus(status === "published" ? "Saved as ready for publishing." : "Saved as draft.");
+};
+
+document.getElementById("extractButton").addEventListener("click", extractFields);
+
+document.getElementById("clearButton").addEventListener("click", () => {
+  rawText.value = "";
+  form.reset();
+  renderPreview();
+  setStatus("Cleared.");
+});
+
+document.getElementById("copyPostButton").addEventListener("click", () => {
+  copyText(buildWhatsAppPost(formOpportunity()), "WhatsApp draft").catch((error) => setStatus(error.message, true));
+});
+
+document.getElementById("copyOutreachButton").addEventListener("click", () => {
+  copyText(buildSourceOutreachMessage(formOpportunity()), "Outreach DM").catch((error) => setStatus(error.message, true));
+});
+
+document.getElementById("saveDraftButton").addEventListener("click", () => {
+  saveOpportunity("draft").catch((error) => setStatus(error.message, true));
+});
+
+document.getElementById("savePublishedButton").addEventListener("click", () => {
+  saveOpportunity("published").catch((error) => setStatus(error.message, true));
+});
+
+document.getElementById("ocrButton").addEventListener("click", async () => {
+  const file = screenshotInput.files?.[0];
+
+  if (!file) {
+    setStatus("Choose a screenshot first.", true);
+    return;
+  }
+
+  if (!window.Tesseract) {
+    setStatus("OCR library could not load. Paste the screenshot text manually.", true);
+    return;
+  }
+
+  try {
+    setStatus("Reading screenshot. This can take a moment...");
+    const result = await window.Tesseract.recognize(file, "eng");
+    rawText.value = [rawText.value.trim(), result.data.text.trim()].filter(Boolean).join("\n\n");
+    extractFields();
+  } catch (error) {
+    setStatus(error.message || "Could not read screenshot.", true);
+  }
+});
+
+document.querySelectorAll("[data-query]").forEach((button) => {
+  button.addEventListener("click", async () => {
+    await copyText(button.dataset.query, "Search query");
+    window.open(`https://www.google.com/search?q=${encodeURIComponent(button.dataset.query)}`, "_blank", "noopener,noreferrer");
+  });
+});
+
+form.addEventListener("input", renderPreview);
+renderPreview();
+</script>
+</body>
+</html>

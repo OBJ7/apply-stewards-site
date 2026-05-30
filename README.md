@@ -21,6 +21,7 @@ APPLY! Stewards is a WhatsApp-first opportunity platform for students, NSS perso
 - `/partners.html` - partnership page for recruiters, employers, training providers, and institutions.
 - `/submit.html` - public opportunity submission form.
 - `/ops.html` - protected internal workflow for APPLY! Stewards operators.
+- `/scout.html` - internal workflow for extracting opportunities from LinkedIn posts, screenshots, and raw notes.
 - `/desk.html` - protected publishing desk for WhatsApp-ready posts, reminders, LinkedIn copy, and branded post images.
 
 ## Serverless functions

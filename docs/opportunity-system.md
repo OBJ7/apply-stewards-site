@@ -24,6 +24,8 @@ This phase creates two clear opportunity lanes:
   - Public form for member-submitted opportunities, with optional JPG, PNG, or WebP flyer upload.
 - `/ops.html`
   - Internal team workflow for saving opportunities, reviewing submissions, publishing member listings, and featuring verified opportunities.
+- `/scout.html`
+  - Internal scout workflow for weekly opportunity searches, screenshot OCR, raw-text extraction, outreach copy, and draft saving.
 - `/desk.html`
   - Internal publishing workflow for turning saved opportunities into WhatsApp-ready posts, reminder copy, LinkedIn copy, and square branded post images.
 
