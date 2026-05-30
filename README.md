@@ -9,7 +9,7 @@ APPLY! Stewards is a WhatsApp-first opportunity platform for students, NSS perso
 - Presents APPLY! Stewards as a trusted opportunity distribution brand.
 - Shows one featured verified opportunity on the homepage.
 - Separates verified opportunities from member-advertised listings.
-- Provides public submission and partnership pages.
+- Provides public submission and partnership pages, including optional flyer image upload for reviewed member submissions.
 - Includes an internal ops workflow for reviewing, saving, publishing, and featuring opportunities.
 - Uses Netlify Functions and Netlify Blobs for lightweight serverless operations.
 
@@ -30,6 +30,7 @@ The Netlify functions live in `netlify/functions` and support:
 - featured opportunity reads
 - member opportunity reads
 - public opportunity submissions
+- public reviewed opportunity images
 - protected opportunity management
 - protected publishing status management
 - trusted source syncing

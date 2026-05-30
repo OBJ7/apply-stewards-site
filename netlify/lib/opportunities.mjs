@@ -97,6 +97,7 @@ export const saveOpportunity = async (opportunity) => {
       postStatus: record.postStatus,
       plannedPostAt: record.plannedPostAt || "",
       postedAt: record.postedAt || "",
+      imageKey: record.imageKey || "",
       publishedAt: record.publishedAt || ""
     }
   });

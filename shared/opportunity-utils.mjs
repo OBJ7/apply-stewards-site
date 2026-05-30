@@ -78,6 +78,10 @@ export const normalizeOpportunityInput = (input = {}) => ({
   reminderPostedAt: cleanText(input.reminderPostedAt),
   postNotes: cleanText(input.postNotes),
   postedBy: cleanText(input.postedBy),
+  imageKey: cleanText(input.imageKey),
+  imageMimeType: cleanText(input.imageMimeType),
+  imageOriginalName: cleanText(input.imageOriginalName),
+  imageAltText: cleanText(input.imageAltText),
   steps: normalizeList(input.steps),
   tips: normalizeList(input.tips),
   tags: normalizeList(input.tags)

@@ -331,7 +331,19 @@ header {
   gap: 18px;
 }
 .member-card {
+  overflow: hidden;
+  padding: 0;
+}
+.member-card-body {
   padding: 24px;
+}
+.member-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
 }
 .member-meta {
   display: grid;
@@ -501,9 +513,11 @@ header {
 
       <div data-member-opportunities class="member-board-grid">
         <article class="member-card">
-          <h3>No member-advertised opportunities yet</h3>
-          <p>Once the first approved community listing is published, it will appear here with its direct source link and separate disclaimer.</p>
-          <a href="/submit.html" class="btn btn-secondary">Share an opportunity</a>
+          <div class="member-card-body">
+            <h3>No member-advertised opportunities yet</h3>
+            <p>Once the first approved community listing is published, it will appear here with its direct source link and separate disclaimer.</p>
+            <a href="/submit.html" class="btn btn-secondary">Share an opportunity</a>
+          </div>
         </article>
       </div>
     </div>

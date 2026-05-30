@@ -129,9 +129,11 @@ const renderMemberOpportunities = (opportunities) => {
   if (!Array.isArray(opportunities) || opportunities.length === 0) {
     memberRoot.innerHTML = `
       <article class="member-card">
-        <h3>No member-advertised opportunities yet</h3>
-        <p>As soon as the first member-submitted listing is approved, it will appear here with a separate disclaimer and direct source link.</p>
-        <a href="/submit.html" class="btn btn-secondary">Share an opportunity</a>
+        <div class="member-card-body">
+          <h3>No member-advertised opportunities yet</h3>
+          <p>As soon as the first member-submitted listing is approved, it will appear here with a separate disclaimer and direct source link.</p>
+          <a href="/submit.html" class="btn btn-secondary">Share an opportunity</a>
+        </div>
       </article>
     `;
     return;
@@ -139,21 +141,30 @@ const renderMemberOpportunities = (opportunities) => {
 
   memberRoot.innerHTML = opportunities
     .map(
-      (opportunity) => `
+      (opportunity) => {
+        const imageMarkup = opportunity.imageUrl
+          ? `<img class="member-image" src="${escapeHtml(opportunity.imageUrl)}" alt="${escapeHtml(opportunity.imageAltText || `${opportunity.title} opportunity image`)}" loading="lazy">`
+          : "";
+
+        return `
         <article class="member-card">
-          <div class="featured-tags" style="margin-top:0; margin-bottom:12px;">
-            <span class="featured-tag">${escapeHtml(opportunity.category || "Opportunity")}</span>
+          ${imageMarkup}
+          <div class="member-card-body">
+            <div class="featured-tags" style="margin-top:0; margin-bottom:12px;">
+              <span class="featured-tag">${escapeHtml(opportunity.category || "Opportunity")}</span>
+            </div>
+            <h3>${escapeHtml(opportunity.title)}</h3>
+            <p>${escapeHtml(opportunity.summary)}</p>
+            <div class="member-meta">
+              <span><strong>Organisation:</strong> ${escapeHtml(opportunity.organization || "Not stated")}</span>
+              <span><strong>Who it fits:</strong> ${escapeHtml(opportunity.audience || "See source")}</span>
+              <span><strong>Deadline:</strong> ${escapeHtml(formatDeadline(opportunity.deadline))}</span>
+            </div>
+            <a href="${escapeHtml(opportunity.sourceUrl)}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Open source</a>
           </div>
-          <h3>${escapeHtml(opportunity.title)}</h3>
-          <p>${escapeHtml(opportunity.summary)}</p>
-          <div class="member-meta">
-            <span><strong>Organisation:</strong> ${escapeHtml(opportunity.organization || "Not stated")}</span>
-            <span><strong>Who it fits:</strong> ${escapeHtml(opportunity.audience || "See source")}</span>
-            <span><strong>Deadline:</strong> ${escapeHtml(formatDeadline(opportunity.deadline))}</span>
-          </div>
-          <a href="${escapeHtml(opportunity.sourceUrl)}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Open source</a>
         </article>
-      `
+      `;
+      }
     )
     .join("");
 };

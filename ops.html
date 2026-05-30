@@ -150,6 +150,16 @@ button, .button-link {
   color: var(--muted);
   line-height: 1.7;
 }
+.submission-image {
+  display: block;
+  width: 100%;
+  max-height: 190px;
+  margin: 12px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  object-fit: cover;
+  background: #f8fafc;
+}
 .meta {
   display: flex;
   gap: 10px;
@@ -411,6 +421,7 @@ const renderOpportunities = (items, featuredId) => {
     wrapper.className = "list-item";
     wrapper.innerHTML = `
       <div class="pill">${opportunity.listingType === "verified" ? "Verified lane" : "Member lane"}</div>
+      ${opportunity.imageKey ? `<img class="submission-image" src="/.netlify/functions/opportunity-image?key=${encodeURIComponent(opportunity.imageKey)}" alt="${opportunity.title} submitted image">` : ""}
       <h3>${opportunity.title}</h3>
       <p>${opportunity.summary}</p>
       <div class="meta">

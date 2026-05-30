@@ -15,6 +15,10 @@ export default async () => {
       deadline: opportunity.deadline,
       sourceUrl: opportunity.sourceUrl,
       summary: opportunity.summary,
+      imageUrl: opportunity.imageKey
+        ? `/.netlify/functions/opportunity-image?key=${encodeURIComponent(opportunity.imageKey)}`
+        : "",
+      imageAltText: opportunity.imageAltText,
       tags: opportunity.tags
     }))
   });

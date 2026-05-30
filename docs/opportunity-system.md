@@ -21,7 +21,7 @@ This phase creates two clear opportunity lanes:
 - `/partners.html`
   - Public partnership page for organisations, recruiters, and programme teams.
 - `/submit.html`
-  - Public form for member-submitted opportunities.
+  - Public form for member-submitted opportunities, with optional JPG, PNG, or WebP flyer upload.
 - `/ops.html`
   - Internal team workflow for saving opportunities, reviewing submissions, publishing member listings, and featuring verified opportunities.
 - `/desk.html`
@@ -33,8 +33,10 @@ This phase creates two clear opportunity lanes:
   - Public read endpoint for the featured verified opportunity.
 - `/.netlify/functions/member-opportunities`
   - Public read endpoint for published member-advertised opportunities.
+- `/.netlify/functions/opportunity-image`
+  - Public read endpoint for approved member-submitted opportunity images.
 - `/.netlify/functions/submit-member-opportunity`
-  - Public `POST` endpoint for member submissions. Submissions land as `pending_review`.
+  - Public `POST` endpoint for member submissions. Submissions and optional images land as `pending_review`.
 - `/.netlify/functions/save-opportunity`
   - Protected `POST` endpoint for the ops workflow.
 - `/.netlify/functions/list-opportunities`
@@ -61,8 +63,8 @@ Set this on Netlify before using the protected ops actions:
 
 1. Team-sourced verified listings go through `/ops.html`.
 2. Community-submitted listings come through `/submit.html`.
-3. Pending submissions appear in the ops queue.
-4. Approved community listings are published to the member board.
+3. Pending submissions, including any uploaded flyer image, appear in the ops queue.
+4. Approved community listings are published to the member board with their image when one was submitted.
 5. Trusted official sources can be synced from `/ops.html` to seed real verified opportunities automatically.
 6. Published verified listings can be featured on the homepage and rotated automatically.
 7. Ready listings move into `/desk.html`, where the team copies the formatted post, downloads or copies the branded image, schedules the item, and marks it posted after it reaches the channel.

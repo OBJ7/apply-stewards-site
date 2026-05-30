@@ -237,6 +237,12 @@ button, .button-link {
       </div>
 
       <div class="field">
+        <label for="posterImage">Poster or flyer image</label>
+        <input id="posterImage" name="posterImage" type="file" accept="image/jpeg,image/png,image/webp">
+        <div class="hint">Optional. Upload a JPG, PNG, or WebP image up to 2 MB. It will only appear publicly after review and approval.</div>
+      </div>
+
+      <div class="field">
         <label for="summary">What should people know?</label>
         <textarea id="summary" name="summary" placeholder="Give a short summary of the opportunity, who it is for, and why someone should look at it."></textarea>
       </div>
@@ -265,6 +271,9 @@ button, .button-link {
 const form = document.getElementById("member-submit-form");
 const statusMessage = document.getElementById("statusMessage");
 const validationRoot = document.getElementById("validation");
+const posterImageInput = document.getElementById("posterImage");
+const maxImageBytes = 2 * 1024 * 1024;
+const allowedImageTypes = ["image/jpeg", "image/png", "image/webp"];
 
 const setStatus = (message, isError = false) => {
   statusMessage.textContent = message;
@@ -277,12 +286,46 @@ const renderErrors = (errors) => {
     : "";
 };
 
+const readFileAsDataUrl = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(new Error("Could not read the selected image."));
+    reader.readAsDataURL(file);
+  });
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   renderErrors([]);
   setStatus("Submitting...");
 
-  const payload = Object.fromEntries(new FormData(form).entries());
+  const formData = new FormData(form);
+  const imageFile = posterImageInput.files?.[0] || null;
+  formData.delete("posterImage");
+  const payload = Object.fromEntries(formData.entries());
+
+  if (imageFile) {
+    if (!allowedImageTypes.includes(imageFile.type)) {
+      renderErrors(["Image must be a JPG, PNG, or WebP file."]);
+      setStatus("Please choose a supported image file.", true);
+      return;
+    }
+
+    if (imageFile.size > maxImageBytes) {
+      renderErrors(["Image must be 2 MB or smaller."]);
+      setStatus("Please choose a smaller image.", true);
+      return;
+    }
+
+    try {
+      payload.imageName = imageFile.name;
+      payload.imageDataUrl = await readFileAsDataUrl(imageFile);
+    } catch (error) {
+      renderErrors([error.message]);
+      setStatus("Please choose the image again.", true);
+      return;
+    }
+  }
 
   const response = await fetch("/.netlify/functions/submit-member-opportunity", {
     method: "POST",
