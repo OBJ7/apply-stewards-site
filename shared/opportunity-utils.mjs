@@ -71,6 +71,13 @@ export const normalizeOpportunityInput = (input = {}) => ({
   verificationNotes: cleanText(input.verificationNotes),
   rawNotes: cleanText(input.rawNotes),
   status: cleanText(input.status) || "published",
+  postStatus: cleanText(input.postStatus),
+  plannedPostAt: cleanText(input.plannedPostAt),
+  postedAt: cleanText(input.postedAt),
+  reminderAt: cleanText(input.reminderAt),
+  reminderPostedAt: cleanText(input.reminderPostedAt),
+  postNotes: cleanText(input.postNotes),
+  postedBy: cleanText(input.postedBy),
   steps: normalizeList(input.steps),
   tips: normalizeList(input.tips),
   tags: normalizeList(input.tags)
@@ -187,6 +194,92 @@ export const buildApplystyle = (opportunity) => {
       "*Disclaimer:* This listing was shared by a community member or partner. Please do your own due diligence before applying."
     );
   }
+
+  return lines.join("\n");
+};
+
+const applyFooter = [
+  "",
+  "Need help preparing your CV or cover letter for this? APPLY! Opportunity Help Desk is coming soon:",
+  "https://applystewards.org/help-desk.html",
+  "",
+  "Join APPLY! Stewards:",
+  "https://applystewards.org"
+];
+
+export const buildWhatsAppPost = (opportunity) =>
+  [
+    buildApplystyle(opportunity),
+    ...applyFooter
+  ].join("\n");
+
+export const buildReminderPost = (opportunity) => {
+  const lines = [
+    "*DEADLINE REMINDER*",
+    "",
+    `*${opportunity.title}*`,
+    opportunity.organization ? `${opportunity.organization}` : "",
+    "",
+    `*Deadline:* ${formatDeadline(opportunity.deadline)}`,
+    opportunity.audience ? `*Who it fits:* ${opportunity.audience}` : "",
+    "",
+    "*Apply / source link:*",
+    opportunity.sourceUrl,
+    "",
+    "If this fits you, do not wait until the final day. Open the source, confirm the requirements, and prepare your documents early.",
+    "",
+    "APPLY! Stewards"
+  ];
+
+  return lines.filter(Boolean).join("\n");
+};
+
+export const buildLinkedInPost = (opportunity) => {
+  const tags = opportunity.tags?.length
+    ? opportunity.tags.map((tag) => `#${String(tag).replace(/[^\w]/g, "")}`).filter((tag) => tag.length > 1)
+    : [];
+
+  const lines = [
+    `${opportunity.title} - ${opportunity.organization}`,
+    "",
+    opportunity.summary,
+    "",
+    opportunity.audience ? `Who it fits: ${opportunity.audience}` : "",
+    opportunity.location ? `Location: ${opportunity.location}` : "",
+    `Deadline: ${formatDeadline(opportunity.deadline)}`,
+    "",
+    "Apply through the official source:",
+    opportunity.sourceUrl,
+    "",
+    "APPLY! Stewards helps students and young graduates find clearer, more trustworthy opportunity information.",
+    "",
+    [...new Set(["#Ghana", "#Opportunities", "#CareerDevelopment", ...tags])].slice(0, 8).join(" ")
+  ];
+
+  return lines.filter(Boolean).join("\n");
+};
+
+export const buildDailyPostPack = (opportunities = []) => {
+  const selected = opportunities.filter(Boolean);
+  const lines = [
+    "*APPLY! DAILY POST PACK*",
+    "",
+    `Prepared opportunities: ${selected.length}`,
+    "Copy each item into the channel with its branded image.",
+    ""
+  ];
+
+  selected.forEach((opportunity, index) => {
+    lines.push(
+      `*${index + 1}. ${opportunity.title}*`,
+      `${opportunity.organization} | ${opportunity.category}`,
+      `Deadline: ${formatDeadline(opportunity.deadline)}`,
+      `Apply: ${opportunity.sourceUrl}`,
+      ""
+    );
+  });
+
+  lines.push("APPLY! Stewards");
 
   return lines.join("\n");
 };

@@ -16,12 +16,16 @@ This phase creates two clear opportunity lanes:
   - Keeps the brand story, trust signals, partnership call-to-action, and a single featured verified opportunity.
 - `/opportunities.html`
   - Dedicated opportunities hub for the featured verified lane and the separate member-advertised board.
+- `/help-desk.html`
+  - Public coming-soon page for the APPLY! Opportunity Help Desk pilot: CV support, cover letter help, application checklists, and deadline follow-through.
 - `/partners.html`
   - Public partnership page for organisations, recruiters, and programme teams.
 - `/submit.html`
   - Public form for member-submitted opportunities.
 - `/ops.html`
   - Internal team workflow for saving opportunities, reviewing submissions, publishing member listings, and featuring verified opportunities.
+- `/desk.html`
+  - Internal publishing workflow for turning saved opportunities into WhatsApp-ready posts, reminder copy, LinkedIn copy, and square branded post images.
 
 ## Netlify functions
 
@@ -37,6 +41,8 @@ This phase creates two clear opportunity lanes:
   - Protected `GET` endpoint for the full queue.
 - `/.netlify/functions/update-opportunity-status`
   - Protected `POST` endpoint for publishing or reclassifying a saved opportunity.
+- `/.netlify/functions/update-publishing-status`
+  - Protected `POST` endpoint for marking opportunities as ready, scheduled, posted, skipped, or back under review for channel publishing.
 - `/.netlify/functions/set-featured-opportunity`
   - Protected `POST` endpoint for changing the featured verified opportunity.
 - `rotate-opportunity-of-day`
@@ -59,6 +65,16 @@ Set this on Netlify before using the protected ops actions:
 4. Approved community listings are published to the member board.
 5. Trusted official sources can be synced from `/ops.html` to seed real verified opportunities automatically.
 6. Published verified listings can be featured on the homepage and rotated automatically.
+7. Ready listings move into `/desk.html`, where the team copies the formatted post, downloads or copies the branded image, schedules the item, and marks it posted after it reaches the channel.
+
+## Publishing desk workflow
+
+- Every published opportunity gets a publishing status.
+- `ready` items appear in the daily post pack.
+- `scheduled` items keep a planned posting time.
+- `posted` items stay out of the active queue while preserving the posting record.
+- `skipped` items are kept for history without being posted.
+- Application links remain in the generated copy as full source URLs, so WhatsApp and most messaging apps can make them clickable.
 
 ## Trusted-source automation
 

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check:functions": "node --check netlify/functions/opportunity-of-day.mjs && node --check netlify/functions/save-opportunity.mjs && node --check netlify/functions/list-opportunities.mjs && node --check netlify/functions/set-featured-opportunity.mjs && node --check netlify/functions/rotate-opportunity-of-day.mjs && node --check netlify/functions/member-opportunities.mjs && node --check netlify/functions/submit-member-opportunity.mjs && node --check netlify/functions/update-opportunity-status.mjs && node --check netlify/functions/sync-trusted-opportunities.mjs && node --check netlify/lib/opportunities.mjs && node --check netlify/lib/trusted-sources.mjs && node --check assets/site.js && node --check shared/opportunity-utils.mjs"
+    "check:functions": "node --check netlify/functions/opportunity-of-day.mjs && node --check netlify/functions/save-opportunity.mjs && node --check netlify/functions/list-opportunities.mjs && node --check netlify/functions/set-featured-opportunity.mjs && node --check netlify/functions/rotate-opportunity-of-day.mjs && node --check netlify/functions/member-opportunities.mjs && node --check netlify/functions/submit-member-opportunity.mjs && node --check netlify/functions/update-opportunity-status.mjs && node --check netlify/functions/update-publishing-status.mjs && node --check netlify/functions/sync-trusted-opportunities.mjs && node --check netlify/lib/opportunities.mjs && node --check netlify/lib/trusted-sources.mjs && node --check assets/site.js && node --check shared/opportunity-utils.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.4"

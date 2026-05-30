@@ -58,6 +58,18 @@ const publicOpportunityShape = (opportunity) => ({
   verificationMethod: opportunity.verificationMethod
 });
 
+const defaultPostStatus = (opportunity) => {
+  if (opportunity.postStatus) {
+    return opportunity.postStatus;
+  }
+
+  if (opportunity.status === "published") {
+    return "ready";
+  }
+
+  return "needs_review";
+};
+
 export const saveOpportunity = async (opportunity) => {
   const updatedAt = new Date().toISOString();
   const publishedAt =
@@ -69,6 +81,7 @@ export const saveOpportunity = async (opportunity) => {
     ...opportunity,
     updatedAt,
     publishedAt,
+    postStatus: defaultPostStatus(opportunity),
     applystyle: buildApplystyle(opportunity)
   };
 
@@ -81,6 +94,9 @@ export const saveOpportunity = async (opportunity) => {
       status: record.status,
       listingType: record.listingType,
       category: record.category,
+      postStatus: record.postStatus,
+      plannedPostAt: record.plannedPostAt || "",
+      postedAt: record.postedAt || "",
       publishedAt: record.publishedAt || ""
     }
   });
