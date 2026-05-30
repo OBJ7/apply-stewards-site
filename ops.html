@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APPLY! Stewards Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0f766e;
+  --line: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --danger: #b91c1c;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  color: var(--text);
+}
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: 38px;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+.hero p {
+  margin: 0 0 28px;
+  max-width: 780px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 22px;
+}
+.card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+}
+.stack {
+  display: grid;
+  gap: 16px;
+}
+.field {
+  display: grid;
+  gap: 8px;
+}
+.field label {
+  font-size: 13px;
+  font-weight: 700;
+}
+.two-up {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+input, textarea, select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font: inherit;
+  color: var(--text);
+}
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.hint {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+button, .button-link {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+.primary {
+  background: var(--primary);
+  color: #fff;
+}
+.secondary {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+.preview {
+  white-space: pre-wrap;
+  padding: 16px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  line-height: 1.7;
+  font-size: 14px;
+}
+.status {
+  min-height: 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.status.error {
+  color: var(--danger);
+}
+.errors {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--danger);
+  line-height: 1.7;
+}
+.list {
+  display: grid;
+  gap: 12px;
+}
+.list-item {
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.list-item h3 {
+  margin: 10px 0 6px;
+  font-size: 17px;
+}
+.list-item p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 13px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: #115e59;
+  font-size: 12px;
+  font-weight: 700;
+}
+@media (max-width: 900px) {
+  .grid, .two-up {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>Opportunity Ops</h1>
+    <p>Save verified opportunities, review member submissions, sync trusted official sources, feature one verified listing on the homepage, and turn a single structured entry into an Applystyle-ready post.</p>
+  </div>
+
+  <div class="grid">
+    <section class="card">
+      <form id="opportunity-form" class="stack">
+        <div class="field">
+          <label for="adminToken">Admin token</label>
+          <input id="adminToken" name="adminToken" type="password" autocomplete="off" placeholder="Required for save, review, and feature actions">
+          <div class="hint">Set this as `APPLY_ADMIN_TOKEN` in Netlify before using the save and review tools.</div>
+        </div>
+
+        <div class="two-up">
+          <div class="field">
+            <label for="listingType">Lane</label>
+            <select id="listingType" name="listingType"></select>
+          </div>
+          <div class="field">
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option value="published">Published</option>
+              <option value="draft">Draft</option>
+              <option value="pending_review">Pending review</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="two-up">
+          <div class="field">
+            <label for="title">Title</label>
+            <input id="title" name="title" required>
+          </div>
+          <div class="field">
+            <label for="organization">Organization</label>
+            <input id="organization" name="organization" required>
+          </div>
+        </div>
+
+        <div class="two-up">
+          <div class="field">
+            <label for="category">Category</label>
+            <select id="category" name="category"></select>
+          </div>
+          <div class="field">
+            <label for="audience">Who it fits</label>
+            <input id="audience" name="audience">
+          </div>
+        </div>
+
+        <div class="two-up">
+          <div class="field">
+            <label for="location">Location</label>
+            <input id="location" name="location">
+          </div>
+          <div class="field">
+            <label for="deadline">Deadline</label>
+            <input id="deadline" name="deadline" type="date">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="sourceUrl">Source URL</label>
+          <input id="sourceUrl" name="sourceUrl" type="url" required placeholder="https://...">
+        </div>
+
+        <div class="field">
+          <label for="summary">Short summary</label>
+          <textarea id="summary" name="summary"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="whyItFits">Why it may be worth attention</label>
+          <textarea id="whyItFits" name="whyItFits"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="steps">Application steps</label>
+          <textarea id="steps" name="steps" placeholder="One step per line"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="tips">Quick tips</label>
+          <textarea id="tips" name="tips" placeholder="One tip per line"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="tags">Tags</label>
+          <textarea id="tags" name="tags" placeholder="One tag per line or comma separated"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="verificationNotes">Verification notes</label>
+          <textarea id="verificationNotes" name="verificationNotes"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="rawNotes">Raw notes / screenshot transcript</label>
+          <textarea id="rawNotes" name="rawNotes"></textarea>
+        </div>
+
+        <div class="field">
+          <label><input id="makeFeatured" name="makeFeatured" type="checkbox" style="width:auto; margin-right:8px;"> Feature this on the homepage now</label>
+        </div>
+
+        <div id="validation"></div>
+        <div id="statusMessage" class="status"></div>
+
+        <div class="actions">
+          <button class="primary" type="submit">Save opportunity</button>
+          <button class="secondary" type="button" id="refreshList">Refresh queue</button>
+          <button class="secondary" type="button" id="syncTrustedSources">Sync trusted sources</button>
+          <a class="button-link secondary" href="/submit.html">Open public member form</a>
+        </div>
+      </form>
+    </section>
+
+    <section class="stack">
+      <div class="card">
+        <h2 style="margin:0 0 12px;">Applystyle preview</h2>
+        <div class="hint" style="margin-bottom:14px;">The same structured entry can power the website and your WhatsApp copy.</div>
+        <div id="preview" class="preview"></div>
+      </div>
+
+      <div class="card">
+        <h2 style="margin:0 0 12px;">Recent opportunities and submissions</h2>
+        <div class="hint" style="margin-bottom:14px;">Pending member submissions can be published into the member board. Published verified listings can be featured on the homepage. Automated trusted-source imports also land here as verified opportunities.</div>
+        <div id="opportunityList" class="list"></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script type="module">
+import {
+  buildApplystyle,
+  categoryOptions,
+  listingTypeOptions,
+  normalizeOpportunityInput,
+  validateOpportunityInput
+} from "./shared/opportunity-utils.mjs";
+
+const form = document.getElementById("opportunity-form");
+const preview = document.getElementById("preview");
+const validationRoot = document.getElementById("validation");
+const statusMessage = document.getElementById("statusMessage");
+const opportunityList = document.getElementById("opportunityList");
+const refreshListButton = document.getElementById("refreshList");
+const syncTrustedSourcesButton = document.getElementById("syncTrustedSources");
+const categorySelect = document.getElementById("category");
+const listingTypeSelect = document.getElementById("listingType");
+
+categorySelect.innerHTML = categoryOptions.map((option) => `<option value="${option}">${option}</option>`).join("");
+listingTypeSelect.innerHTML = listingTypeOptions.map((option) => `<option value="${option.value}">${option.label}</option>`).join("");
+
+const getAdminToken = () => document.getElementById("adminToken").value.trim();
+
+const getFormPayload = () => {
+  const formData = new FormData(form);
+  return {
+    listingType: formData.get("listingType"),
+    title: formData.get("title"),
+    organization: formData.get("organization"),
+    category: formData.get("category"),
+    audience: formData.get("audience"),
+    location: formData.get("location"),
+    deadline: formData.get("deadline"),
+    sourceUrl: formData.get("sourceUrl"),
+    summary: formData.get("summary"),
+    whyItFits: formData.get("whyItFits"),
+    verificationNotes: formData.get("verificationNotes"),
+    rawNotes: formData.get("rawNotes"),
+    status: formData.get("status"),
+    steps: formData.get("steps"),
+    tips: formData.get("tips"),
+    tags: formData.get("tags"),
+    makeFeatured: document.getElementById("makeFeatured").checked
+  };
+};
+
+const renderValidation = (errors) => {
+  validationRoot.innerHTML = errors.length
+    ? `<ul class="errors">${errors.map((error) => `<li>${error}</li>`).join("")}</ul>`
+    : "";
+};
+
+const setStatus = (message, isError = false) => {
+  statusMessage.textContent = message;
+  statusMessage.className = isError ? "status error" : "status";
+};
+
+const updatePreview = () => {
+  const opportunity = normalizeOpportunityInput(getFormPayload());
+  const errors = validateOpportunityInput(opportunity);
+  renderValidation(errors);
+  preview.textContent = buildApplystyle(opportunity);
+};
+
+const postJson = async (url, body) => {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "x-apply-admin-token": getAdminToken()
+    },
+    body: JSON.stringify(body)
+  });
+
+  const payload = await response.json();
+
+  if (!response.ok) {
+    throw new Error(payload.error || "Request failed.");
+  }
+
+  return payload;
+};
+
+const renderOpportunities = (items, featuredId) => {
+  if (!items.length) {
+    opportunityList.innerHTML = "<div class='hint'>Nothing saved yet.</div>";
+    return;
+  }
+
+  opportunityList.innerHTML = "";
+
+  items.forEach((opportunity) => {
+    const origin = opportunity.verificationMethod === "trusted_source_automation"
+      ? `Auto import: ${opportunity.sourceLabel || "Trusted source"}`
+      : "Saved manually";
+    const wrapper = document.createElement("div");
+    wrapper.className = "list-item";
+    wrapper.innerHTML = `
+      <div class="pill">${opportunity.listingType === "verified" ? "Verified lane" : "Member lane"}</div>
+      <h3>${opportunity.title}</h3>
+      <p>${opportunity.summary}</p>
+      <div class="meta">
+        <span>${opportunity.organization}</span>
+        <span>${opportunity.status}</span>
+        <span>${featuredId === opportunity.id ? "Featured now" : "Not featured"}</span>
+        <span>${origin}</span>
+      </div>
+    `;
+
+    const actionRow = document.createElement("div");
+    actionRow.className = "actions";
+    actionRow.style.marginTop = "12px";
+
+    if (opportunity.status === "pending_review") {
+      const publishMember = document.createElement("button");
+      publishMember.type = "button";
+      publishMember.className = "secondary";
+      publishMember.textContent = "Publish to member board";
+      publishMember.addEventListener("click", async () => {
+        try {
+          await postJson("/.netlify/functions/update-opportunity-status", {
+            opportunityId: opportunity.id,
+            status: "published",
+            listingType: "member_advertised"
+          });
+          setStatus("Member opportunity published.");
+          await loadRecentOpportunities();
+        } catch (error) {
+          setStatus(error.message, true);
+        }
+      });
+      actionRow.appendChild(publishMember);
+    }
+
+    if (opportunity.status === "published" && opportunity.listingType === "verified") {
+      const featureButton = document.createElement("button");
+      featureButton.type = "button";
+      featureButton.className = "secondary";
+      featureButton.textContent = featuredId === opportunity.id ? "Featured now" : "Feature on homepage";
+      featureButton.addEventListener("click", async () => {
+        try {
+          await postJson("/.netlify/functions/set-featured-opportunity", {
+            opportunityId: opportunity.id
+          });
+          setStatus("Homepage featured opportunity updated.");
+          await loadRecentOpportunities();
+        } catch (error) {
+          setStatus(error.message, true);
+        }
+      });
+      actionRow.appendChild(featureButton);
+    }
+
+    if (actionRow.children.length > 0) {
+      wrapper.appendChild(actionRow);
+    }
+
+    opportunityList.appendChild(wrapper);
+  });
+};
+
+const loadRecentOpportunities = async () => {
+  const token = getAdminToken();
+
+  if (!token) {
+    opportunityList.innerHTML = "<div class='hint'>Add the admin token to load saved opportunities.</div>";
+    return;
+  }
+
+  const response = await fetch("/.netlify/functions/list-opportunities", {
+    headers: {
+      accept: "application/json",
+      "x-apply-admin-token": token
+    }
+  });
+
+  const payload = await response.json();
+
+  if (!response.ok) {
+    throw new Error(payload.error || "Could not load opportunities.");
+  }
+
+  renderOpportunities(payload.opportunities, payload.featuredOpportunityId);
+};
+
+form.addEventListener("input", updatePreview);
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const token = getAdminToken();
+
+  if (!token) {
+    setStatus("Add the admin token before saving an opportunity.", true);
+    return;
+  }
+
+  const payload = getFormPayload();
+  const normalized = normalizeOpportunityInput(payload);
+  const errors = validateOpportunityInput(normalized);
+  renderValidation(errors);
+
+  if (errors.length > 0) {
+    setStatus("Please fix the validation issues first.", true);
+    return;
+  }
+
+  try {
+    setStatus("Saving opportunity...");
+    const result = await postJson("/.netlify/functions/save-opportunity", payload);
+    setStatus(result.message);
+    await loadRecentOpportunities();
+  } catch (error) {
+    setStatus(error.message, true);
+  }
+});
+
+refreshListButton.addEventListener("click", async () => {
+  try {
+    setStatus("Loading queue...");
+    await loadRecentOpportunities();
+    setStatus("Queue refreshed.");
+  } catch (error) {
+    setStatus(error.message, true);
+  }
+});
+
+syncTrustedSourcesButton.addEventListener("click", async () => {
+  const token = getAdminToken();
+
+  if (!token) {
+    setStatus("Add the admin token before syncing trusted sources.", true);
+    return;
+  }
+
+  try {
+    setStatus("Checking trusted official sources...");
+    const result = await postJson("/.netlify/functions/sync-trusted-opportunities", {});
+    await loadRecentOpportunities();
+    setStatus(
+      result.importedCount > 0
+        ? `Trusted sources synced. Imported ${result.importedCount} opportunity${result.importedCount === 1 ? "" : "ies"}.`
+        : "Trusted sources checked, but nothing new matched the current scope."
+    );
+  } catch (error) {
+    setStatus(error.message, true);
+  }
+});
+
+updatePreview();
+</script>
+</body>
+</html>

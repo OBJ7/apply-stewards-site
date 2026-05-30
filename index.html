@@ -1,0 +1,1469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>APPLY! Stewards | Verified Opportunities and Partnership Reach</title>
+<meta name="description" content="APPLY! Stewards connects over 20,000 students and young graduates across Ghana to verified opportunities through a WhatsApp-first community, while helping partners reach the right audience with clearer opportunity briefs.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<meta name="theme-color" content="#0f766e">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="APPLY! Stewards | Verified Opportunities and Partnership Reach">
+<meta property="og:description" content="A WhatsApp-first community connecting students and young graduates across Ghana to verified opportunities, with a clear partnership route for organisations and recruiters.">
+<meta property="og:url" content="https://applystewards.org/">
+<meta property="og:image" content="https://applystewards.org/assets/logo.png">
+
+<style>
+:root {
+  --primary: #0f766e;
+  --primary-dark: #115e59;
+  --primary-light: #ecfdf5;
+  --forest: #0b5f46;
+  --bg-page: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-surface-soft: #f2fbf8;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --white: #ffffff;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a { color: inherit; }
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { letter-spacing: -0.03em; }
+p { color: var(--text-muted); }
+
+.section {
+  padding: 88px 0;
+}
+
+.section-alt {
+  background:
+    linear-gradient(180deg, rgba(15, 118, 110, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.section-head {
+  max-width: 780px;
+  margin-bottom: 42px;
+}
+
+.section-head h2 {
+  font-size: 36px;
+  line-height: 1.12;
+  margin: 12px 0 14px;
+}
+
+.section-head p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-wrapper {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 800;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.brand img {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  object-fit: cover;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.nav-links a:hover {
+  color: var(--text-main);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: transform 0.16s ease, background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-secondary {
+  background: var(--white);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-surface);
+  border-color: #cbd5e1;
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-muted);
+}
+
+.btn-ghost:hover {
+  background: rgba(15, 118, 110, 0.06);
+  color: var(--text-main);
+}
+
+.btn-light {
+  background: var(--white);
+  color: var(--primary-dark);
+}
+
+.btn-light:hover {
+  background: #f8fafc;
+}
+
+.btn-outline-light {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hero {
+  padding: 92px 0 72px;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 50% 0%, #f1f5f9 0%, transparent 44%),
+    radial-gradient(circle at 12% 22%, rgba(15, 118, 110, 0.10) 0%, transparent 55%),
+    radial-gradient(circle at 92% 18%, rgba(14, 107, 79, 0.08) 0%, transparent 55%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  right: -140px;
+  top: -160px;
+  width: 520px;
+  height: 520px;
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(14, 107, 79, 0.12) 0,
+      rgba(14, 107, 79, 0.12) 10px,
+      rgba(15, 118, 110, 0.08) 10px,
+      rgba(15, 118, 110, 0.08) 20px,
+      rgba(255, 255, 255, 0) 20px,
+      rgba(255, 255, 255, 0) 36px
+    );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: 48px;
+  align-items: center;
+  position: relative;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(15, 118, 110, 0.14);
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 18px 0;
+  font-size: 56px;
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+.hero h1 span {
+  color: var(--primary);
+}
+
+.hero-lead {
+  max-width: 640px;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.hero-proof {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 620px;
+  margin-top: 26px;
+}
+
+.proof-item {
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(15, 118, 110, 0.14);
+  box-shadow: var(--shadow-soft);
+}
+
+.proof-item strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.proof-item span {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.stat-card.highlight {
+  grid-column: span 2;
+  background: linear-gradient(135deg, var(--text-main) 0%, #183049 100%);
+  color: var(--white);
+  border: none;
+  box-shadow: var(--shadow);
+}
+
+.stat-card.highlight .stat-label {
+  color: #cbd5e1;
+}
+
+.stat-card.soft {
+  background: var(--primary-light);
+  border-color: rgba(15, 118, 110, 0.18);
+}
+
+.stat-num {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.stat-note {
+  color: #134e4a;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.logo-strip {
+  padding: 32px 0;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo-text {
+  display: block;
+  margin-bottom: 16px;
+  color: #94a3b8;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.uni-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  padding: 0 20px;
+}
+
+.uni-item {
+  color: #334155;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.featured-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 22px;
+  padding: 30px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: var(--shadow-soft);
+}
+
+.featured-shell.empty {
+  grid-template-columns: 1fr;
+}
+
+.featured-status {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 14px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.featured-copy h3 {
+  margin-bottom: 12px;
+  font-size: 32px;
+  line-height: 1.12;
+}
+
+.featured-summary {
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.featured-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.featured-meta div,
+.featured-mini-card {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+}
+
+.featured-meta strong,
+.featured-mini-title {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.featured-meta span {
+  color: #334155;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.featured-block + .featured-block {
+  margin-top: 20px;
+}
+
+.featured-block h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.featured-block p,
+.featured-list {
+  line-height: 1.8;
+}
+
+.featured-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #334155;
+}
+
+.featured-list li + li {
+  margin-top: 8px;
+}
+
+.featured-side {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.featured-mini-card p {
+  margin-bottom: 16px;
+  line-height: 1.75;
+}
+
+.featured-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.featured-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.member-board-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.member-disclaimer {
+  max-width: 420px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(191, 219, 254, 0.9);
+  background: #f8fbff;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.member-board-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.member-card {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.member-card h3 {
+  margin-bottom: 10px;
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.member-card p {
+  margin-bottom: 16px;
+  line-height: 1.75;
+}
+
+.member-meta {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 18px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.process-card {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.step-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.12);
+  color: var(--primary);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.process-card h3 {
+  margin-bottom: 10px;
+  font-size: 19px;
+}
+
+.process-card p {
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.signal-card {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-soft);
+}
+
+.signal-card h3 {
+  margin-bottom: 10px;
+  font-size: 19px;
+}
+
+.signal-card p {
+  line-height: 1.8;
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.t-card {
+  padding: 22px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.t-quote {
+  padding-left: 14px;
+  border-left: 4px solid rgba(15, 118, 110, 0.35);
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.t-meta {
+  margin-top: 14px;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sample-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.sample-card {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.sample-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.sample-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sample-tag.alt {
+  background: var(--bg-surface);
+  color: #475569;
+}
+
+.sample-card h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 1.32;
+}
+
+.sample-card p {
+  line-height: 1.75;
+}
+
+.sample-list {
+  margin: 16px 0 0;
+  padding-left: 18px;
+  color: #334155;
+}
+
+.sample-list li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.partner-panel {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 24px;
+  margin-top: 48px;
+  padding: 40px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 62%, var(--forest) 100%);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.partner-panel::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.18) 0%, transparent 35%),
+    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.14) 0%, transparent 28%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 12px,
+      rgba(255, 255, 255, 0) 12px,
+      rgba(255, 255, 255, 0) 26px
+    );
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.partner-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.partner-panel .section-kicker {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.partner-panel h2 {
+  margin: 10px 0 14px;
+  font-size: 32px;
+  line-height: 1.14;
+}
+
+.partner-panel p {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
+}
+
+.partner-points {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.partner-point {
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.11);
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.partner-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.founder-note {
+  margin-top: 48px;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--primary);
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.founder-note h2 {
+  margin: 10px 0 14px;
+  font-size: 30px;
+  line-height: 1.14;
+}
+
+.founder-note p {
+  max-width: 820px;
+  line-height: 1.85;
+}
+
+.founder-note p + p {
+  margin-top: 14px;
+}
+
+.founder-signoff {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.cta-box {
+  position: relative;
+  overflow: hidden;
+  margin-top: 56px;
+  padding: 52px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--text-main) 0%, #163149 55%, var(--primary) 100%);
+  color: var(--white);
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.cta-box::before {
+  content: "";
+  position: absolute;
+  inset: -60px;
+  background:
+    radial-gradient(circle at 20% 40%, rgba(255, 255, 255, 0.14) 0%, transparent 50%),
+    radial-gradient(circle at 80% 10%, rgba(15, 118, 110, 0.26) 0%, transparent 26%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 10px,
+      rgba(255, 255, 255, 0) 10px,
+      rgba(255, 255, 255, 0) 22px
+    );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.cta-box > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-kicker {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cta-box h2 {
+  margin-bottom: 14px;
+  font-size: 36px;
+  line-height: 1.12;
+}
+
+.cta-box p {
+  max-width: 620px;
+  margin: 0 auto 26px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer {
+  padding: 44px 0 56px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.footer-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-note {
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer-links a:hover {
+  color: var(--text-main);
+}
+
+@media (max-width: 980px) {
+  .nav-links { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .featured-shell { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .signal-grid { grid-template-columns: 1fr; }
+  .sample-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .member-board-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .partner-panel { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  header { position: static; }
+  .section { padding: 64px 0; }
+  .nav-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 0;
+  }
+  .nav-actions { width: 100%; }
+  .hero { padding: 64px 0 56px; }
+  .hero h1 { font-size: 38px; }
+  .hero-proof,
+  .featured-meta,
+  .process-grid,
+  .sample-grid,
+  .member-board-grid,
+  .testimonials,
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+  .member-board-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .stat-card.highlight { grid-column: span 1; }
+  .logo-strip { padding: 24px 0; }
+  .uni-list {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
+  }
+  .section-head h2,
+  .partner-panel h2,
+  .founder-note h2,
+  .cta-box h2 {
+    font-size: 28px;
+  }
+  .partner-panel,
+  .founder-note,
+  .cta-box,
+  .sample-card,
+  .process-card,
+  .signal-card,
+  .t-card {
+    padding: 24px;
+  }
+  .footer-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+
+<body id="top">
+
+<header>
+  <div class="container nav-wrapper">
+    <a href="#top" class="brand" aria-label="APPLY! Stewards Home">
+      <img src="assets/logo.png" alt="APPLY! Stewards logo">
+      <span>APPLY! Stewards</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/opportunities.html">Opportunities</a>
+      <a href="/partners.html">Partners</a>
+      <a href="/submit.html">Submit</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="/partners.html" class="btn btn-secondary">Partner with us</a>
+      <a href="https://whatsapp.com/channel/0029VafFxxJAojYq0GO8e41x" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Join Channel</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Verified opportunities. Clear direction. Real progress.</span>
+
+        <h1>Verified opportunities.<br><span>Trusted reach for partners.</span></h1>
+
+        <p class="hero-lead">
+          APPLY! Stewards connects over 20,000 students and young graduates across Ghana to verified scholarships, entry-level jobs, internships, National Service roles, graduate trainee programs, capacity-building events, and skill training opportunities through a WhatsApp-first community built around clarity and trust.
+        </p>
+
+        <div class="hero-actions">
+          <a href="https://whatsapp.com/channel/0029VafFxxJAojYq0GO8e41x" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Join WhatsApp</a>
+          <a href="/partners.html" class="btn btn-secondary">Partner with APPLY!</a>
+          <a href="/opportunities.html" class="btn btn-ghost">Explore opportunities</a>
+        </div>
+
+        <div class="hero-proof">
+          <div class="proof-item">
+            <strong>Official-source mindset</strong>
+            <span>Every verified post is curated for clarity: eligibility, deadlines, and next steps made simple.</span>
+          </div>
+          <div class="proof-item">
+            <strong>Partner-ready distribution</strong>
+            <span>Organisations can reach a mobile-first audience with cleaner briefs and clearer calls to action.</span>
+          </div>
+        </div>
+
+        <div class="badge-row" aria-label="Opportunity categories">
+          <div class="pill">Scholarships</div>
+          <div class="pill">Entry-Level Jobs</div>
+          <div class="pill">Internships</div>
+          <div class="pill">Graduate Programs</div>
+          <div class="pill">National Service Roles</div>
+          <div class="pill">Skill Training</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card highlight">
+          <span class="stat-num">20,000+</span>
+          <span class="stat-label">students and young graduates reached through the WhatsApp community</span>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-num">1,600+</span>
+          <span class="stat-label">posts published with curated context and clearer formatting</span>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-num">500+</span>
+          <span class="stat-label">career-enhancing opportunities shared in the past 18 months</span>
+        </div>
+
+        <div class="stat-card soft">
+          <div class="stat-note">
+            Each post aims to answer three practical questions fast: Who is this for? When is it due? What should I do next?
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="logo-strip">
+    <div class="container">
+      <span class="logo-text">Students across Ghana's tertiary ecosystem</span>
+      <div class="uni-list" aria-label="University footprint">
+        <span class="uni-item">UG Legon</span>
+        <span class="uni-item">KNUST</span>
+        <span class="uni-item">UCC</span>
+        <span class="uni-item">UEW</span>
+        <span class="uni-item">UDS</span>
+        <span class="uni-item">UMaT</span>
+        <span class="uni-item">UPSA</span>
+        <span class="uni-item">UHAS</span>
+        <span class="uni-item">GIMPA</span>
+        <span class="uni-item">UENR</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="featured-opportunity" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">Opportunity of the day</span>
+        <h2>One verified opportunity, broken down properly</h2>
+        <p>
+          This space highlights one APPLY! Stewards verified opportunity at a time with the context that helps someone move quickly: who it fits, what to do next, and a few practical tips before they apply. It can also auto-fill from a trusted watchlist of official careers pages when a matching opportunity is live.
+        </p>
+      </div>
+
+      <div data-featured-opportunity>
+        <div class="featured-shell empty">
+          <div class="featured-copy">
+            <span class="featured-status">Loading</span>
+            <h3>Fetching the current featured opportunity</h3>
+            <p class="featured-summary">A fresh verified opportunity and its application breakdown will appear here.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-actions" style="margin-top:24px;">
+        <a href="/opportunities.html" class="btn btn-secondary">Open full opportunities hub</a>
+        <a href="/submit.html" class="btn btn-ghost">Share an opportunity</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="partnership-ready" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">Partnership-ready</span>
+        <h2>A cleaner bridge between opportunity access and partner reach</h2>
+        <p>
+          APPLY! is strongest when each channel has a clear role. WhatsApp carries the community and urgency. The website builds trust and converts partner interest. LinkedIn adds public proof and credibility.
+        </p>
+      </div>
+
+      <div class="sample-grid">
+        <article class="sample-card">
+          <div class="sample-top">
+            <span class="sample-tag">Audience</span>
+            <span class="sample-tag alt">Who you reach</span>
+          </div>
+          <h3>Students and young graduates across Ghana</h3>
+          <p>APPLY! is built for people actively looking for scholarships, internships, entry-level jobs, NSS roles, graduate programmes, and practical growth opportunities.</p>
+          <ul class="sample-list">
+            <li>WhatsApp-first and mobile-first</li>
+            <li>Clearer audience fit for opportunity posts</li>
+            <li>Built around fast scanning and next steps</li>
+          </ul>
+          <div style="margin-top:18px;">
+            <a href="/partners.html" class="btn btn-secondary">See partnership details</a>
+          </div>
+        </article>
+
+        <article class="sample-card">
+          <div class="sample-top">
+            <span class="sample-tag">Offer types</span>
+            <span class="sample-tag alt">What we share</span>
+          </div>
+          <h3>Practical, early-career opportunities</h3>
+          <p>We are most useful when the opportunity is relevant, real, and actionable for students and young graduates.</p>
+          <ul class="sample-list">
+            <li>Jobs and internships</li>
+            <li>Scholarships, fellowships, and training</li>
+            <li>Graduate roles, NSS openings, and events</li>
+          </ul>
+          <div style="margin-top:18px;">
+            <a href="/opportunities.html" class="btn btn-secondary">Open opportunities hub</a>
+          </div>
+        </article>
+
+        <article class="sample-card">
+          <div class="sample-top">
+            <span class="sample-tag">Why it works</span>
+            <span class="sample-tag alt">How APPLY helps</span>
+          </div>
+          <h3>Clarity makes more people act</h3>
+          <p>The value is not only finding opportunities. It is packaging them in a way that helps people trust the source, understand the fit, and move faster.</p>
+          <ul class="sample-list">
+            <li>Source-first verification</li>
+            <li>Cleaner summaries and next steps</li>
+            <li>Better bridge from discovery to application</li>
+          </ul>
+          <div style="margin-top:18px;">
+            <a href="mailto:hello@applystewards.org?subject=Partnership%20Enquiry" class="btn btn-secondary">Email for partnerships</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">How it works</span>
+        <h2>From scattered links to clearer action</h2>
+        <p>
+          APPLY! Stewards works because it adds structure to messy information. The same workflow helps the community understand opportunities faster and helps partners distribute them more clearly.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <span class="step-chip">1</span>
+          <h3>Find good leads</h3>
+          <p>We watch official pages, trusted announcements, partner submissions, and strong community referrals for relevant opportunities.</p>
+        </div>
+
+        <div class="process-card">
+          <span class="step-chip">2</span>
+          <h3>Verify and filter</h3>
+          <p>We look for source credibility, audience fit, deadlines, and red flags before resharing anything with the community.</p>
+        </div>
+
+        <div class="process-card">
+          <span class="step-chip">3</span>
+          <h3>Simplify the brief</h3>
+          <p>We turn scattered information into clearer summaries: who qualifies, what to prepare, where to apply, and what to do next.</p>
+        </div>
+
+        <div class="process-card">
+          <span class="step-chip">4</span>
+          <h3>Share and support</h3>
+          <p>We publish through WhatsApp and create room for reminders, questions, and a little extra confidence around applications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">Why people trust it</span>
+        <h2>Bridging the information gap with clarity and care</h2>
+        <p>
+          APPLY! Stewards was built on a simple idea: strong opportunities should not stay hidden behind late messages, confusing posters, or missing context. The goal is to make useful information more accessible, understandable, and timely.
+        </p>
+      </div>
+
+      <div class="signal-grid">
+        <div class="signal-card">
+          <h3>Verification-first</h3>
+          <p>Posts are shaped around original sources, trusted partners, and practical checks before they reach the community.</p>
+        </div>
+
+        <div class="signal-card">
+          <h3>Clear summaries</h3>
+          <p>Eligibility, deadlines, application links, and required documents are easier to scan when the opportunity actually matters.</p>
+        </div>
+
+        <div class="signal-card">
+          <h3>Community momentum</h3>
+          <p>The platform is not only about discovery. It is about helping people move from "I saw it" to "I applied."</p>
+        </div>
+      </div>
+
+      <div class="testimonials" aria-label="Community feedback">
+        <div class="t-card">
+          <div class="t-quote">
+            "I saw a job opportunity posted on the page, applied, and I am starting work the next week."
+          </div>
+          <div class="t-meta">Community feedback</div>
+        </div>
+
+        <div class="t-card">
+          <div class="t-quote">
+            "I got selected for a graduate program after the aptitude test and interview. No referral, just preparation and the right information."
+          </div>
+          <div class="t-meta">Community feedback</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="examples" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">What we share</span>
+        <h2>Typical categories partners and members can expect on APPLY!</h2>
+        <p>
+          These are representative examples of the types of listings APPLY! Stewards helps people act on. The format matters as much as the opportunity itself: clear audience, clear deadline, clear next step.
+        </p>
+      </div>
+
+      <div class="sample-grid">
+        <div class="sample-card">
+          <div class="sample-top">
+            <span class="sample-tag">Scholarship</span>
+            <span class="sample-tag alt">Undergraduate</span>
+          </div>
+          <h3>Merit scholarship with tuition support</h3>
+          <p>Shared with a simple summary of who qualifies, the deadline, required documents, and the official application route.</p>
+          <ul class="sample-list">
+            <li>Eligibility explained in plain language</li>
+            <li>Required documents highlighted early</li>
+            <li>Official link included for trust and speed</li>
+          </ul>
+        </div>
+
+        <div class="sample-card">
+          <div class="sample-top">
+            <span class="sample-tag">Graduate Role</span>
+            <span class="sample-tag alt">Early Career</span>
+          </div>
+          <h3>Graduate trainee or entry-level hiring call</h3>
+          <p>Shared with role overview, candidate profile, application window, and practical notes to help graduates decide quickly.</p>
+          <ul class="sample-list">
+            <li>Audience fit called out clearly</li>
+            <li>Deadline and application stages summarised</li>
+            <li>Fast read for people applying on mobile</li>
+          </ul>
+        </div>
+
+        <div class="sample-card">
+          <div class="sample-top">
+            <span class="sample-tag">Skill Training</span>
+            <span class="sample-tag alt">Career Growth</span>
+          </div>
+          <h3>Free bootcamp, fellowship, or upskilling program</h3>
+          <p>Shared with benefits, commitment level, target audience, and the exact next steps needed to apply or register.</p>
+          <ul class="sample-list">
+            <li>Time commitment made easier to assess</li>
+            <li>Benefits and outcomes explained upfront</li>
+            <li>Application steps stripped of guesswork</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="partners" class="partner-panel">
+        <div>
+          <span class="section-kicker">For partners</span>
+          <h2>Reach ambitious students and graduates with a clearer brief</h2>
+          <p>
+            APPLY! Stewards helps organisations, recruiters, programme teams, and training providers share opportunities with a high-intent audience across Ghana. We package listings for clarity so the right people can understand the offer and act quickly.
+          </p>
+
+          <div class="partner-actions">
+            <a href="/partners.html" class="btn btn-light">Open partnership page</a>
+            <a href="mailto:hello@applystewards.org?subject=Partnership%20Enquiry" class="btn btn-outline-light">Email for partnerships</a>
+          </div>
+        </div>
+
+        <div class="partner-points">
+          <div class="partner-point">Reach students and graduates through a trusted, active WhatsApp distribution channel.</div>
+          <div class="partner-point">Share jobs, internships, scholarships, training programs, events, and graduate roles.</div>
+          <div class="partner-point">Improve response quality with clearer briefs, better audience fit, and simpler next-step guidance.</div>
+        </div>
+      </div>
+
+      <div class="founder-note">
+        <span class="section-kicker">Founder note</span>
+        <h2>Why I built APPLY! Stewards</h2>
+        <p>
+          I kept seeing talented students and graduates miss great opportunities because the information arrived late, felt confusing, or did not feel trustworthy enough to act on. APPLY! Stewards exists to reduce that gap: find strong opportunities, explain them clearly, and help more people move with confidence.
+        </p>
+        <p>
+          I want the experience to feel useful, hopeful, and practical - not noisy. If a post helps someone take one strong next step, then the platform is doing its job.
+        </p>
+        <p class="founder-signoff">Community-first at the core: help me, and let me help you.</p>
+      </div>
+
+      <div class="cta-box">
+        <span class="cta-kicker">Ready to move?</span>
+        <h2>Join the community or work with APPLY!</h2>
+        <p>
+          Join APPLY! Stewards on WhatsApp for verified opportunities, clearer summaries, and practical next steps. If you are an organisation, recruiter, or programme team, use the partnership page to see how APPLY! can help you reach the right audience.
+        </p>
+
+        <div class="cta-actions">
+          <a href="https://whatsapp.com/channel/0029VafFxxJAojYq0GO8e41x" class="btn btn-light" target="_blank" rel="noopener noreferrer">Join Channel (Free)</a>
+          <a href="/partners.html" class="btn btn-outline-light">Partnerships</a>
+          <a href="/submit.html" class="btn btn-outline-light">Submit opportunity</a>
+          <a href="https://forms.gle/Tzxkh7HqT6xBMguh6" class="btn btn-outline-light" target="_blank" rel="noopener noreferrer">Feedback (60 sec)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-flex">
+    <div class="footer-copy">
+      <div style="color: var(--text-muted); font-weight: 700;">&copy; 2024-2026 APPLY! Stewards. All rights reserved.</div>
+      <div class="footer-note">Built to make opportunity information clearer, faster, and easier to trust.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="mailto:hello@applystewards.org">Contact</a>
+      <a href="https://forms.gle/Tzxkh7HqT6xBMguh6" target="_blank" rel="noopener noreferrer">Feedback</a>
+      <a href="/opportunities.html">Opportunities</a>
+      <a href="/partners.html">Partners</a>
+      <a href="/submit.html">Submit Opportunity</a>
+      <a href="#featured-opportunity">Today</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#partners">Partner proof</a>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="assets/site.js"></script>
+</body>
+</html>

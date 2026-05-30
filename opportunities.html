@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opportunities Hub | APPLY! Stewards</title>
+<meta name="description" content="Browse APPLY! Stewards verified opportunities, see the live featured opportunity, and explore the separate member-advertised board in one dedicated hub.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<style>
+:root {
+  --primary: #0f766e;
+  --primary-dark: #115e59;
+  --primary-light: #ecfdf5;
+  --text: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --surface: #f8fafc;
+  --surface-strong: #ffffff;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top, rgba(15, 118, 110, 0.09) 0%, transparent 36%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+a { color: inherit; }
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-weight: 800;
+}
+.brand img {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+.nav-links a:hover {
+  color: var(--text);
+}
+.nav-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+.btn-secondary {
+  background: #fff;
+  color: var(--text);
+  border-color: var(--line);
+}
+.hero {
+  padding: 76px 0 34px;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: 22px;
+  align-items: start;
+}
+.hero h1 {
+  margin: 16px 0 14px;
+  font-size: 52px;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 16px;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+.hero-card,
+.mini-card,
+.member-card,
+.featured-mini-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-soft);
+}
+.hero-card {
+  padding: 22px;
+}
+.hero-card h3,
+.member-card h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+.hero-card p,
+.mini-card p,
+.member-card p,
+.featured-mini-card p,
+.featured-summary,
+.featured-block p,
+.featured-list {
+  color: #475569;
+  line-height: 1.8;
+}
+.hero-list,
+.featured-list {
+  margin: 14px 0 0;
+  padding-left: 18px;
+}
+.hero-list li + li,
+.featured-list li + li {
+  margin-top: 8px;
+}
+.section {
+  padding: 42px 0 78px;
+}
+.section + .section {
+  padding-top: 16px;
+}
+.section-head {
+  max-width: 780px;
+  margin-bottom: 26px;
+}
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.section-head h2 {
+  margin: 12px 0 12px;
+  font-size: 38px;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+.section-head p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.featured-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+  gap: 22px;
+  padding: 30px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: var(--shadow);
+}
+.featured-shell.empty {
+  grid-template-columns: 1fr;
+}
+.featured-status {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 14px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.featured-copy h3 {
+  margin: 0 0 12px;
+  font-size: 34px;
+  line-height: 1.1;
+}
+.featured-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+.featured-meta div,
+.featured-mini-card,
+.mini-card {
+  padding: 16px;
+}
+.featured-meta div {
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.featured-meta strong,
+.featured-mini-title,
+.mini-card strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.featured-meta span,
+.member-meta {
+  color: #475569;
+}
+.featured-block + .featured-block {
+  margin-top: 20px;
+}
+.featured-block h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+.featured-side {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+.featured-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.featured-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+.member-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+.member-disclaimer {
+  max-width: 420px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #dbeafe;
+  background: #f8fbff;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.member-board-grid,
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.member-card {
+  padding: 24px;
+}
+.member-meta {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.mini-card {
+  min-height: 100%;
+}
+.mini-card p {
+  margin: 0 0 16px;
+}
+.footer {
+  padding: 0 0 64px;
+}
+.footer-card {
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-top: 14px;
+}
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 700;
+}
+@media (max-width: 980px) {
+  .hero-grid,
+  .featured-shell,
+  .member-head,
+  .member-board-grid,
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+  .member-head {
+    align-items: flex-start;
+  }
+}
+@media (max-width: 760px) {
+  header {
+    position: static;
+  }
+  .nav {
+    min-height: auto;
+    padding: 18px 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links,
+  .nav-actions,
+  .hero-actions,
+  .footer-links {
+    width: 100%;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
+  .hero h1,
+  .section-head h2,
+  .featured-copy h3 {
+    font-size: 34px;
+  }
+  .featured-meta {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a href="/" class="brand" aria-label="Back to APPLY! Stewards landing page">
+      <img src="assets/logo.png" alt="APPLY! Stewards logo">
+      <span>APPLY! Stewards</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/opportunities.html">Opportunities</a>
+      <a href="/partners.html">Partners</a>
+      <a href="/submit.html">Submit</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="https://whatsapp.com/channel/0029VafFxxJAojYq0GO8e41x" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Join WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Opportunities hub</span>
+        <h1>Browse the live APPLY! workflow in one clean place.</h1>
+        <p>
+          This is the public working surface for opportunities. Verified listings and the separate member-advertised lane live here, while the homepage stays focused on trust, the mission, and partnership conversion.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#verified" class="btn btn-secondary">See verified opportunity</a>
+          <a href="#member-board" class="btn btn-secondary">See member board</a>
+          <a href="/partners.html" class="btn btn-secondary">For partners</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>How this page works</h3>
+        <p>The verified lane stays stricter. The member lane stays visible but clearly separated. That way the community gets both access and clarity.</p>
+        <ul class="hero-list">
+          <li>The featured opportunity can be set manually or seeded from trusted official sources.</li>
+          <li>Member-submitted opportunities appear only after review and approval.</li>
+          <li>Every card points people back to the original source before they apply.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="verified" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">Verified lane</span>
+        <h2>One live opportunity, broken down properly</h2>
+        <p>
+          This is the same featured opportunity logic from the homepage, but it lives better here because people can immediately keep exploring once they are done reading it.
+        </p>
+      </div>
+
+      <div data-featured-opportunity>
+        <div class="featured-shell empty">
+          <div class="featured-copy">
+            <span class="featured-status">Loading</span>
+            <h3>Fetching today’s featured opportunity</h3>
+            <p class="featured-summary">A verified opportunity and its next-step breakdown will appear here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="member-board" class="section">
+    <div class="container">
+      <div class="member-head">
+        <div class="section-head" style="margin-bottom:0;">
+          <span class="section-kicker">Member advertised lane</span>
+          <h2>Useful community leads, kept separate on purpose</h2>
+          <p>
+            Some openings come from members, founders, alumni, recruiters, or organisations in the community. They can still be useful, but they should not be confused with APPLY! verified listings.
+          </p>
+        </div>
+
+        <div class="member-disclaimer">
+          Credibility for this lane remains the responsibility of the person applying. Always do your own due diligence before acting on a member-advertised listing.
+        </div>
+      </div>
+
+      <div data-member-opportunities class="member-board-grid">
+        <article class="member-card">
+          <h3>No member-advertised opportunities yet</h3>
+          <p>Once the first approved community listing is published, it will appear here with its direct source link and separate disclaimer.</p>
+          <a href="/submit.html" class="btn btn-secondary">Share an opportunity</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">Next steps</span>
+        <h2>Use the hub based on what you need today</h2>
+      </div>
+
+      <div class="support-grid">
+        <article class="mini-card">
+          <strong>Need more opportunities?</strong>
+          <p>Join the WhatsApp channel for the faster-moving feed while the website grows into the cleaner archive and discovery layer.</p>
+          <a href="https://whatsapp.com/channel/0029VafFxxJAojYq0GO8e41x" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Join channel</a>
+        </article>
+
+        <article class="mini-card">
+          <strong>Want to contribute?</strong>
+          <p>If you have a real lead from your network, use the member submission form and we’ll place it in the right lane after review.</p>
+          <a href="/submit.html" class="btn btn-secondary">Open submit form</a>
+        </article>
+
+        <article class="mini-card">
+          <strong>Looking to distribute an opportunity?</strong>
+          <p>The partnership page explains who APPLY! reaches, what kinds of listings fit best, and how to work with the team.</p>
+          <a href="/partners.html" class="btn btn-secondary">Open partners page</a>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-card">
+      <strong style="display:block; margin-bottom:8px;">APPLY! Stewards</strong>
+      <div style="color: var(--muted); line-height: 1.8;">Verified opportunities. Clear direction. Real progress.</div>
+      <div class="footer-links">
+        <a href="/">Landing page</a>
+        <a href="/partners.html">Partners</a>
+        <a href="/submit.html">Submit opportunity</a>
+        <a href="https://forms.gle/Tzxkh7HqT6xBMguh6" target="_blank" rel="noopener noreferrer">Feedback</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partnerships | APPLY! Stewards</title>
+<meta name="description" content="Partner with APPLY! Stewards to reach students and young graduates across Ghana through a trusted, WhatsApp-first opportunity community.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<style>
+:root {
+  --primary: #0f766e;
+  --primary-dark: #115e59;
+  --primary-light: #ecfdf5;
+  --line: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(15, 118, 110, 0.08) 0%, transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+a { color: inherit; }
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-weight: 800;
+}
+.brand img {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+.nav-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+.btn-secondary {
+  background: #fff;
+  color: var(--text);
+  border-color: var(--line);
+}
+.hero {
+  padding: 82px 0 42px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: 24px;
+  align-items: start;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hero h1 {
+  margin: 16px 0 14px;
+  font-size: 56px;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.85;
+  font-size: 16px;
+}
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.hero-card,
+.card,
+.quote-card,
+.cta-card {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+.hero-card {
+  padding: 24px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+.hero-card h3,
+.card h3,
+.quote-card h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+.hero-card p,
+.card p,
+.quote-card p,
+.card li {
+  color: #475569;
+  line-height: 1.8;
+}
+.mini-metrics {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+.metric {
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.metric strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--primary-dark);
+  font-size: 24px;
+}
+.section {
+  padding: 20px 0 76px;
+}
+.section-head {
+  max-width: 780px;
+  margin-bottom: 26px;
+}
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.section-head h2 {
+  margin: 12px 0 12px;
+  font-size: 38px;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+.section-head p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.grid-3,
+.grid-2 {
+  display: grid;
+  gap: 18px;
+}
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.card {
+  padding: 24px;
+}
+.card ul {
+  margin: 14px 0 0;
+  padding-left: 18px;
+}
+.card li + li {
+  margin-top: 8px;
+}
+.step-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.12);
+  color: var(--primary);
+  font-weight: 800;
+}
+.quote-card {
+  padding: 24px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fffb 100%);
+}
+.quote {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #1e293b;
+}
+.quote-meta {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+.cta-card {
+  padding: 28px;
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  color: #fff;
+}
+.cta-card p {
+  color: rgba(255, 255, 255, 0.86);
+}
+.cta-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.btn-light {
+  background: #fff;
+  color: var(--text);
+}
+.btn-outline-light {
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+.footer {
+  padding: 0 0 64px;
+}
+.footer-card {
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-top: 14px;
+}
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 700;
+}
+@media (max-width: 980px) {
+  .hero-grid,
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 760px) {
+  header {
+    position: static;
+  }
+  .nav {
+    min-height: auto;
+    padding: 18px 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links,
+  .nav-actions,
+  .hero-actions,
+  .cta-actions {
+    width: 100%;
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
+  .hero h1,
+  .section-head h2 {
+    font-size: 36px;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a href="/" class="brand" aria-label="Back to APPLY! Stewards home">
+      <img src="assets/logo.png" alt="APPLY! Stewards logo">
+      <span>APPLY! Stewards</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/opportunities.html">Opportunities</a>
+      <a href="/partners.html">Partners</a>
+      <a href="/submit.html">Submit</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="https://whatsapp.com/channel/0029VafFxxJAojYq0GO8e41x" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Join Channel</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Partnerships</span>
+        <h1>Reach students and young graduates with more clarity.</h1>
+        <p>
+          APPLY! Stewards helps organisations, recruiters, programme teams, and training providers share relevant opportunities with a WhatsApp-first community across Ghana. We focus on clarity, trust, and audience fit so the right people can understand an opportunity and act quickly.
+        </p>
+
+        <div class="hero-actions">
+          <a href="mailto:hello@applystewards.org?subject=Partnership%20Enquiry" class="btn btn-primary">Email for partnerships</a>
+          <a href="/opportunities.html" class="btn btn-secondary">See the public opportunities hub</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Why partner with APPLY!</h3>
+        <p>APPLY! is strongest when an opportunity needs an audience that is mobile-first, early-career, and actively looking for the next step.</p>
+
+        <div class="mini-metrics">
+          <div class="metric">
+            <strong>20,000+</strong>
+            <span>students and young graduates reached through the community</span>
+          </div>
+          <div class="metric">
+            <strong>1,600+</strong>
+            <span>posts packaged with clearer context and next steps</span>
+          </div>
+          <div class="metric">
+            <strong>500+</strong>
+            <span>career-enhancing opportunities shared in the past 18 months</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">Audience fit</span>
+        <h2>Best for opportunities that need reach, trust, and quick understanding</h2>
+        <p>
+          APPLY! works best when the opportunity is relevant to students or young graduates and benefits from cleaner presentation than a typical flyer or hurried social post can provide.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Who you reach</h3>
+          <ul>
+            <li>University students</li>
+            <li>Recent graduates</li>
+            <li>NSS personnel</li>
+            <li>Early-career job seekers across Ghana</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>What fits best</h3>
+          <ul>
+            <li>Internships and entry-level jobs</li>
+            <li>Graduate trainee programmes</li>
+            <li>Scholarships and fellowships</li>
+            <li>Training programmes, bootcamps, and relevant events</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>What APPLY! adds</h3>
+          <ul>
+            <li>Clearer summary of the opportunity</li>
+            <li>Audience fit and next-step framing</li>
+            <li>Source-first trust cues</li>
+            <li>Distribution through a WhatsApp-first community</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">How it works</span>
+        <h2>A simple workflow from listing to distribution</h2>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <span class="step-chip">1</span>
+          <h3>Share the opportunity brief</h3>
+          <p>Send the role, programme, or opportunity details with the source link, deadline, who it is for, and how people should apply.</p>
+        </article>
+
+        <article class="card">
+          <span class="step-chip">2</span>
+          <h3>APPLY! packages it for clarity</h3>
+          <p>We reshape the information into a cleaner format so the audience can quickly understand the offer, the fit, and the next steps.</p>
+        </article>
+
+        <article class="card">
+          <span class="step-chip">3</span>
+          <h3>Distribute through the right surfaces</h3>
+          <p>WhatsApp remains the main delivery layer. The website supports trust and public visibility, and LinkedIn can support broader public proof.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">What to send</span>
+        <h2>The cleaner the brief, the stronger the post</h2>
+        <p>
+          To move quickly, the team should have the core facts up front. That helps reduce back-and-forth and makes it easier to produce a useful, trustworthy post.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Recommended information</h3>
+          <ul>
+            <li>Official source link</li>
+            <li>Opportunity title and organisation name</li>
+            <li>Deadline or application window</li>
+            <li>Who it is for</li>
+            <li>Application steps or destination</li>
+            <li>Important documents or requirements</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Best-use cases</h3>
+          <ul>
+            <li>You want the opportunity explained more clearly for applicants.</li>
+            <li>You need a youth-facing audience in Ghana.</li>
+            <li>You want stronger trust signals than a poster alone can provide.</li>
+            <li>You want distribution that feels more useful than generic reposting.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <article class="quote-card">
+          <h3>Why this matters</h3>
+          <p class="quote">
+            APPLY! exists because many strong opportunities lose impact when the information is unclear, late, or hard to trust. Better packaging helps better applicants act.
+          </p>
+          <div class="quote-meta">APPLY! Stewards positioning</div>
+        </article>
+
+        <article class="quote-card">
+          <h3>Community proof</h3>
+          <p class="quote">
+            “I saw a job opportunity posted on the page, applied, and I am starting work the next week.”
+          </p>
+          <div class="quote-meta">Community feedback</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-card">
+        <span class="eyebrow" style="background: rgba(255,255,255,0.14); color: #ffffff;">Next step</span>
+        <h2 style="margin:16px 0 12px; font-size:42px; line-height:1.08; letter-spacing:-0.04em;">Start a partnership conversation</h2>
+        <p>
+          If you have a role, programme, scholarship, training opportunity, or relevant event for students and young graduates in Ghana, reach out with the brief and we can continue from there.
+        </p>
+
+        <div class="cta-actions">
+          <a href="mailto:hello@applystewards.org?subject=Partnership%20Enquiry" class="btn btn-light">hello@applystewards.org</a>
+          <a href="/submit.html" class="btn btn-outline-light">General opportunity submission</a>
+          <a href="/opportunities.html" class="btn btn-outline-light">Public opportunities hub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-card">
+      <strong style="display:block; margin-bottom:8px;">APPLY! Stewards</strong>
+      <div style="color: var(--muted); line-height: 1.8;">Verified opportunities. Clear direction. Real progress.</div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/opportunities.html">Opportunities</a>
+        <a href="/partners.html">Partners</a>
+        <a href="/submit.html">Submit opportunity</a>
+        <a href="https://forms.gle/Tzxkh7HqT6xBMguh6" target="_blank" rel="noopener noreferrer">Feedback</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
