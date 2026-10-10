@@ -1,3 +1,4 @@
+import { canFeature } from "../../shared/publication-policy.mjs";
 import { requireAdmin } from "../lib/admin-auth.mjs";
 import { json, methodNotAllowed } from "../lib/http.mjs";
 import { getOpportunity, setFeaturedOpportunity } from "../lib/opportunities.mjs";
@@ -33,9 +34,9 @@ export default async (request) => {
     return json({ error: "Opportunity not found." }, 404);
   }
 
-  if (opportunity.status !== "published" || opportunity.listingType !== "verified") {
+  if (!canFeature(opportunity)) {
     return json(
-      { error: "Only published verified opportunities can be featured." },
+      { error: "Only current published verified opportunities can be featured." },
       400
     );
   }

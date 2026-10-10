@@ -1,6 +1,6 @@
 # APPLY! Stewards
 
-APPLY! Stewards is a WhatsApp-first opportunity platform for students, NSS personnel, recent graduates, and early-career talent in Ghana. The site acts as the public trust layer for a community that distributes verified opportunities and gives partners a clear route to reach the right audience.
+APPLY! Stewards is a WhatsApp-first opportunity platform for students, NSS personnel, recent graduates, and early-career talent in Ghana. The source implements listing, submission, and steward-management workflows. Labels such as “verified” describe a publication lane; they do not guarantee eligibility, source availability, or successful applications.
 
 ![APPLY! Stewards homepage](docs/screenshots/apply-home.png)
 
@@ -20,9 +20,9 @@ APPLY! Stewards is a WhatsApp-first opportunity platform for students, NSS perso
 - `/help-desk.html` - public coming-soon page for the APPLY! Opportunity Help Desk pilot.
 - `/partners.html` - partnership page for recruiters, employers, training providers, and institutions.
 - `/submit.html` - public opportunity submission form.
-- `/ops.html` - protected internal workflow for APPLY! Stewards operators.
+- `/ops.html` - internal workflow with server-protected management actions for APPLY! Stewards operators.
 - `/scout.html` - internal workflow for extracting opportunities from LinkedIn posts, screenshots, and raw notes.
-- `/desk.html` - protected publishing desk for WhatsApp-ready posts, reminders, LinkedIn copy, and branded post images.
+- `/desk.html` - publishing desk with server-protected management actions for WhatsApp-ready posts, reminders, LinkedIn copy, and branded post images.
 
 ## Serverless functions
 
@@ -45,6 +45,20 @@ Protected ops actions require `APPLY_ADMIN_TOKEN`.
 - Netlify Functions
 - Netlify Blobs
 - Node.js ES modules
+
+## Evidence and contribution
+
+[Case study](docs/case-study.md) · [Information model](docs/information-model.md) · [Verification status](docs/status.md) · [Contributions](docs/contribution.md)
+
+New October 2026 checks distinguish published records from display-eligible records and revalidate featured entries. No deployed persistence, adoption, or external delivery results are claimed.
+
+## Offline fictional demonstration
+
+```bash
+npm test
+```
+
+The tests use fictional listings, fixed times, and an in-memory storage adapter. They do not contact Netlify, import live feeds, or publish posts. Static pages alone do not provide a complete serverless demonstration.
 
 ## Local setup
 
@@ -76,7 +90,7 @@ Set `APPLY_ADMIN_TOKEN` in Netlify before using protected actions in `/ops.html`
 - Pilot the Opportunity Help Desk for CV, cover letter, checklist, and deadline support.
 - Expand source syncing for trusted official opportunity feeds.
 - Add optional DM delivery for approved daily post packs.
-- Explore a future paid planning and accountability tier powered by LockIn-style workflows, embedded into the APPLY! opportunity journey.
+- Improve source-removal reconciliation and human review of imported eligibility.
 
 ## Portfolio note
 

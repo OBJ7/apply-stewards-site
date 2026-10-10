@@ -1,3 +1,4 @@
+import { canFeature } from "../../shared/publication-policy.mjs";
 import {
   normalizeOpportunityInput,
   validateOpportunityInput
@@ -44,8 +45,7 @@ export default async (request) => {
 
   const shouldFeatureNow = Boolean(
     payload.makeFeatured &&
-      opportunity.status === "published" &&
-      opportunity.listingType === "verified"
+      canFeature(opportunity)
   );
 
   const featured = shouldFeatureNow

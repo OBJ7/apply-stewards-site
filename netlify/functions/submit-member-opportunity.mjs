@@ -101,9 +101,10 @@ export default async (request) => {
 
   if (normalized.sourceUrl) {
     try {
-      new URL(normalized.sourceUrl);
+      const url = new URL(normalized.sourceUrl);
+      if (!["http:", "https:"].includes(url.protocol)) throw new Error("Unsupported protocol");
     } catch {
-      errors.push("Source URL must be a valid URL.");
+      errors.push("Source URL must be a valid HTTP or HTTPS URL.");
     }
   }
 

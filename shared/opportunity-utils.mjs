@@ -54,6 +54,7 @@ const dateFromParts = (year, monthIndex, day) => {
     return "";
   }
 
+  if (parsed.getUTCFullYear() !== Number(year) || parsed.getUTCMonth() !== Number(monthIndex) || parsed.getUTCDate() !== Number(day)) return "";
   return parsed.toISOString().slice(0, 10);
 };
 
@@ -337,7 +338,7 @@ export const formatDeadline = (value) => {
   const deadline = cleanText(value);
 
   if (!deadline) {
-    return "Rolling / not stated";
+    return "Not stated — check the source";
   }
 
   const parsed = new Date(deadline);
@@ -414,9 +415,10 @@ export const validateOpportunityInput = (opportunity) => {
 
   if (opportunity.sourceUrl) {
     try {
-      new URL(opportunity.sourceUrl);
+      const url = new URL(opportunity.sourceUrl);
+      if (!["http:", "https:"].includes(url.protocol)) throw new Error("Unsupported protocol");
     } catch {
-      errors.push("Source URL must be a valid URL.");
+      errors.push("Source URL must be a valid HTTP or HTTPS URL.");
     }
   }
 

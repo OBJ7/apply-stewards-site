@@ -1,3 +1,4 @@
+import { publicationEligibility, canFeature } from "../../shared/publication-policy.mjs";
 import { getStore } from "@netlify/blobs";
 import { buildApplystyle } from "../../shared/opportunity-utils.mjs";
 
@@ -125,7 +126,7 @@ export const listOpportunities = async () => {
 
 export const listPublishedOpportunities = async () => {
   const records = await listOpportunities();
-  return records.filter((record) => record.status === "published");
+  return records.filter((record) => publicationEligibility(record).eligible);
 };
 
 export const listPublishedVerifiedOpportunities = async () => {
@@ -139,6 +140,7 @@ export const listPublishedMemberOpportunities = async () => {
 };
 
 export const setFeaturedOpportunity = async (opportunity) => {
+  if (!canFeature(opportunity)) throw new Error("Only current published verified opportunities can be featured.");
   const selectedAt = new Date().toISOString();
   const updatedOpportunity = await saveOpportunity({
     ...opportunity,
@@ -156,8 +158,13 @@ export const setFeaturedOpportunity = async (opportunity) => {
   return featuredRecord;
 };
 
-export const getFeaturedOpportunity = async () =>
-  store.get(featuredKey, { type: "json" });
+export const getFeaturedOpportunity = async () => {
+  const cached = await store.get(featuredKey, { type: "json" });
+  if (!cached?.opportunityId) return null;
+  // Re-read the canonical record: cached status/deadline can be obsolete.
+  const record = await getOpportunity(cached.opportunityId);
+  return canFeature(record) ? { ...cached, opportunity: publicOpportunityShape(record) } : null;
+};
 
 export const ensureFeaturedOpportunity = async () => {
   const current = await getFeaturedOpportunity();
