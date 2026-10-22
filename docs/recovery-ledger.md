@@ -10,7 +10,7 @@ Mission status: **incomplete**. Neither original hostname is verified restored.
 - Added a request-scoped D1 adapter for both Blobs stores. Images are split into atomic 512 KiB chunks to retain the existing 2 MiB upload allowance within D1 row limits. Indexed prefetch avoids an N+1 query limit.
 - Added safe static packaging, source/secret exclusion, original HTML URL handling, and www redirect configuration.
 - Added explicit historical-data and outage messages; failed submissions retain the entered values.
-- Retained daily 06:00 UTC rotation. Cloudflare scheduled rotation does not auto-import feeds; explicit protected sync is available. Imported unknown-deadline records cannot accidentally become featured.
+- Retained daily 06:00 UTC rotation. Cloudflare scheduled rotation does not auto-import feeds; explicit protected sync is available. Source candidates are checked with the existing publication policy before featuring; that policy permits unspecified deadlines.
 - Existing eight automated tests pass. The Cloudflare-runtime integration scenario passes with local D1: page/assets, admin rejection, saving/featuring, forged submission fields, moderation, full 2 MiB image round-trip, publishing status, rotation, withdrawal, private-field exclusion and 65-record listing.
 - Cloudflare dry-run bundles successfully. This is not a deployment.
 - Sites fallback: public recovery copy created and deployment marked succeeded at `https://apply-stewards-recovery.obj7.chatgpt.site` (Site `appgprj_6ada3d1ae51081918f22aa0a47a6b764`, source `a303f26f001dc80320c4c5dc8a41420528c7c6d6`). This static copy labels archive recovery and pauses submissions.
@@ -59,3 +59,27 @@ npm run test:cloudflare
 After the account is authenticated, create a D1 database and add its returned ID to a `d1_databases` entry in `wrangler.jsonc` with binding `DB`; apply schema remotely, set the admin token with `wrangler secret put APPLY_ADMIN_TOKEN`, then run `npm run deploy:cloudflare`. Never put the secret into Git or frontend code. The base config can deploy without DB for a clearly labeled read-only fallback. Keep `HISTORICAL_DATA_STATUS=pending` until an actual export/import has been reconciled.
 
 Official references: https://developers.cloudflare.com/pages/functions/pricing/ ; https://developers.cloudflare.com/d1/platform/pricing/ ; https://developers.cloudflare.com/d1/platform/limits/ ; https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/
+
+## Preserved domain attachment targets (approval pending)
+
+For the older existing Site, retain the four current Name.com nameservers. Once account records are exported and approved, the provider currently requests:
+
+| Type | Name | Proposed value | Existing public value |
+| --- | --- | --- | --- |
+| A | @ | 162.159.143.30 | 91.195.240.94 |
+| A | @ | 172.66.3.26 | part of the same replacement |
+| CNAME | www | custom-domains.chatgpt.site. | replace current www A 91.195.240.94 |
+| TXT | _openai-site-verification | openai-site-verification=Wq7HpNFqGL1PYRZ4AaUGC6WcvD2QiXH_dpmEnfD9-FM | absent in account export until checked |
+| TXT | _cf-custom-hostname | 84b34272-eadd-4f0c-a89f-60dbbb6c39d9 | check account export |
+| TXT | _openai-site-verification.www | openai-site-verification=U3UTok8RXAPBpzTlrP2_oouBJ60z0oMYMzo6Gu7RXX0 | check account export |
+| TXT | _cf-custom-hostname.www | 08631ad4-141f-4bef-b370-84994544be52 | check account export |
+
+These verification tokens are intended for public DNS. A null validation record was also returned for each hostname; refresh the provider requirements before applying changes. Do not remove MX, SPF, DKIM, DMARC or other TXT/CNAME records. DNS edits are not yet authorized or applied.
+
+## Final session checkpoint
+
+- GitHub implementation commit: `a4989333176d06d7da517392bb3ad51383d26151`; draft PR https://github.com/OBJ7/apply-stewards-site/pull/2 . Main was not merged or modified.
+- Existing domain-attached Site now serves the same original static recovery pages in saved version 6, source commit `0d30d919f624db78028a0f2809f397f73db6d327`, deployment `appgdep_6ada3f4b9bf08191ac3471af34ddabd9`, reported succeeded at `https://apply-stewards-preview-obj7.obj7.chatgpt.site`. Its original preview source is retained in Git history/source. Domain attachments were not deleted or changed.
+- Netlify domain-settings page requires sign-in. The secure authentication request was interrupted; fresh browser state still shows login. No authenticated Netlify session is established, and no automatic retry was made.
+- Smallest immediate unblock: authenticated access to the existing Netlify/domain account so the exact DNS records and any restriction can be inspected. If the account blocks DNS changes, support must provide domain access or make the approved records independently of hosting billing. Payment is not assumed necessary or approved.
+- Online forms, administration, images and historical listings remain unavailable on the static fallback. The backend passes local runtime tests but is not live. A mobile viewport and live certificate/redirect checks remain outstanding.
