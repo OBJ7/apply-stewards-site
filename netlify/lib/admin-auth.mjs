@@ -1,4 +1,5 @@
 import { json } from "./http.mjs";
+import { getRuntimeEnv } from "../../shared/runtime-context.mjs";
 
 const extractToken = (request) => {
   const headerToken = request.headers.get("x-apply-admin-token");
@@ -17,7 +18,7 @@ const extractToken = (request) => {
 };
 
 export const requireAdmin = (request) => {
-  const configuredToken = process.env.APPLY_ADMIN_TOKEN;
+  const configuredToken = getRuntimeEnv()?.APPLY_ADMIN_TOKEN ?? process.env.APPLY_ADMIN_TOKEN;
 
   if (!configuredToken) {
     return {

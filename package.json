@@ -4,9 +4,17 @@
   "type": "module",
   "scripts": {
     "check:functions": "node --check netlify/functions/opportunity-of-day.mjs && node --check netlify/functions/opportunity-image.mjs && node --check netlify/functions/save-opportunity.mjs && node --check netlify/functions/list-opportunities.mjs && node --check netlify/functions/set-featured-opportunity.mjs && node --check netlify/functions/rotate-opportunity-of-day.mjs && node --check netlify/functions/member-opportunities.mjs && node --check netlify/functions/submit-member-opportunity.mjs && node --check netlify/functions/update-opportunity-status.mjs && node --check netlify/functions/update-publishing-status.mjs && node --check netlify/functions/sync-trusted-opportunities.mjs && node --check netlify/lib/opportunities.mjs && node --check netlify/lib/trusted-sources.mjs && node --check assets/site.js && node --check shared/opportunity-utils.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "build:cloudflare": "node scripts/build-cloudflare.mjs",
+    "dev:cloudflare": "npm run build:cloudflare && wrangler dev",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy",
+    "test:cloudflare": "npm run build:cloudflare && wrangler deploy --dry-run --outdir dist/worker && node --test tests/cloudflare.integration.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.4"
+  },
+  "devDependencies": {
+    "miniflare": "5.20261019.2-beta",
+    "wrangler": "^4.152.0"
   }
 }
