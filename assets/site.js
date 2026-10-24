@@ -41,7 +41,7 @@ const listMarkup = (items, ordered = false) => {
   `;
 };
 
-const renderEmptyFeatured = () => {
+const renderEmptyFeatured = (restoring = false) => {
   if (!featuredRoot) {
     return;
   }
@@ -61,6 +61,12 @@ const renderEmptyFeatured = () => {
       </div>
     </div>
   `;
+  if (restoring) {
+    featuredRoot.querySelector(".featured-status").textContent = "Archive restoration";
+    featuredRoot.querySelector("h3").textContent = "We’re restoring earlier opportunity listings.";
+    featuredRoot.querySelector(".featured-summary").textContent = "The opportunity archive is being restored. Visit the APPLY! WhatsApp channel for current posts and application links.";
+    featuredRoot.querySelector(".featured-side").innerHTML = '<a href="https://whatsapp.com/channel/0029VafFxxJAojYq0GO8e41x" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View APPLY! on WhatsApp</a>';
+  }
 };
 
 const renderFeatured = (opportunity, selectedAt) => {
@@ -121,7 +127,7 @@ const renderFeatured = (opportunity, selectedAt) => {
   `;
 };
 
-const renderMemberOpportunities = (opportunities) => {
+const renderMemberOpportunities = (opportunities, restoring = false) => {
   if (!memberRoot) {
     return;
   }
@@ -136,6 +142,10 @@ const renderMemberOpportunities = (opportunities) => {
         </div>
       </article>
     `;
+    if (restoring) {
+      memberRoot.querySelector("h3").textContent = "Earlier member listings are being restored";
+      memberRoot.querySelector("p").textContent = "Historical listings have not yet been recovered. New submissions can be shared for review using the form below.";
+    }
     return;
   }
 
@@ -219,22 +229,25 @@ const loadOpportunityData = async () => {
       if (featuredPayload?.featuredOpportunity) {
         renderFeatured(featuredPayload.featuredOpportunity, featuredPayload.selectedAt);
       } else {
-        renderEmptyFeatured();
+        renderEmptyFeatured(featuredPayload?.historicalData === "pending");
       }
     }
 
     if (memberRoot) {
-      renderMemberOpportunities(memberPayload?.opportunities || []);
+      renderMemberOpportunities(memberPayload?.opportunities || [], memberPayload?.historicalData === "pending");
     }
   } catch (error) {
     console.error("Unable to load opportunity data", error);
 
     if (featuredRoot) {
-      renderEmptyFeatured();
+      renderEmptyFeatured(true);
+      featuredRoot.querySelector("h3").textContent = "Opportunity listings are temporarily unavailable";
     }
 
     if (memberRoot) {
-      renderMemberOpportunities([]);
+      renderMemberOpportunities([], true);
+      memberRoot.querySelector("h3").textContent = "Member listings are temporarily unavailable";
+      memberRoot.querySelector("p").textContent = "Please try again later. For current opportunity posts, visit the APPLY! WhatsApp channel.";
     }
   }
 };

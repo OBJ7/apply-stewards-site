@@ -1,3 +1,5 @@
+import { canFeature } from "../../shared/publication-policy.mjs";
+
 const TRUSTED_SOURCES = [
   {
     id: "clerkie",
@@ -489,10 +491,11 @@ export const syncTrustedOpportunities = async (options = {}) => {
     (record) => record.id === currentFeatured?.opportunityId
   );
 
-  if (refreshedCurrent) {
+  const featureCandidate = saved.find((record) => canFeature(record));
+  if (refreshedCurrent && canFeature(refreshedCurrent)) {
     featured = await setFeaturedOpportunity(refreshedCurrent);
-  } else if (saved.length > 0 && (featureTopResult || !currentFeatured?.opportunity)) {
-    featured = await setFeaturedOpportunity(saved[0]);
+  } else if (featureCandidate && (featureTopResult || !currentFeatured?.opportunity)) {
+    featured = await setFeaturedOpportunity(featureCandidate);
   }
 
   return {

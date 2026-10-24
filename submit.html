@@ -327,6 +327,7 @@ form.addEventListener("submit", async (event) => {
     }
   }
 
+  try {
   const response = await fetch("/.netlify/functions/submit-member-opportunity", {
     method: "POST",
     headers: {
@@ -345,6 +346,9 @@ form.addEventListener("submit", async (event) => {
 
   form.reset();
   setStatus("Opportunity submitted for review. Thank you for sharing it.");
+  } catch {
+    setStatus("Submission could not be confirmed. Your entries are still here. Please try again later or contact hello@applystewards.org.", true);
+  }
 });
 </script>
 </body>
